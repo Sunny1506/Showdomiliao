@@ -30,11 +30,11 @@ namespace Showdomiliao
         public void Desenhar()
         {
             Labelpergunta.Text = Pergunta;
-            ButtonResposta1.Text = Resposta1;
-            ButtonResposta2.Text = Resposta2;
-            ButtonResposta3.Text = Resposta3;
-            ButtonResposta4.Text = Resposta4;
-            ButtonResposta5.Text = Resposta5;
+            ButtonResposta1.Text = Resposta01;
+            ButtonResposta2.Text = Resposta02;
+            ButtonResposta3.Text = Resposta03;
+            ButtonResposta4.Text = Resposta04;
+            ButtonResposta5.Text = Resposta05;
         }
 
         private Button QualBTN(int RespostaSelecionada)

@@ -29,7 +29,7 @@ namespace Showdomiliao
             Q2.Resposta03 = "Gabriel García Márquez";
             Q2.Resposta04 = "Jorge Amado";
             Q2.Resposta05 = "Machado de Assis";
-            Q2.RespostaCorreta = "Miguel de Cervantes";
+            Q2.RespostaCorreta = 2;
             Q2.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q2);
 
@@ -40,7 +40,7 @@ namespace Showdomiliao
             Q3.Resposta03 = "Canberra";
             Q3.Resposta04 = "Perth";
             Q3.Resposta05 = "Brisbane";
-            Q3.RespostaCorreta = "Canberra";
+            Q3.RespostaCorreta = 3;
             Q3.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q3);
 
@@ -51,7 +51,7 @@ namespace Showdomiliao
             Q4.Resposta03 = "Marechal Deodoro da Fonseca";
             Q4.Resposta04 = "Dom Pedro II";
             Q4.Resposta05 = "Epitácio Pessoa";
-            Q4.RespostaCorreta = "Marechal Deodoro da Fonseca";
+            Q4.RespostaCorreta = 3;
             Q4.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q4);
 
@@ -62,7 +62,7 @@ namespace Showdomiliao
             Q5.Resposta03 = "H2O";
             Q5.Resposta04 = "O2";
             Q5.Resposta05 = "CH4";
-            Q5.RespostaCorreta = "H2O";
+            Q5.RespostaCorreta = 3;
             Q5.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q5);
 
@@ -73,7 +73,7 @@ namespace Showdomiliao
             Q6.Resposta03 = "Vincent van Gogh";
             Q6.Resposta04 = "Michelangelo";
             Q6.Resposta05 = "Salvador Dalí";
-            Q6.RespostaCorreta = "Leonardo da Vinci";
+            Q6.RespostaCorreta = 2;
             Q6.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q6);
 
@@ -84,7 +84,7 @@ namespace Showdomiliao
             Q7.Resposta03 = "Estados Unidos";
             Q7.Resposta04 = "Brasil";
             Q7.Resposta05 = "Rússia";
-            Q7.RespostaCorreta = "Rússia";
+            Q7.RespostaCorreta = 5;
             Q7.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q7);
 
@@ -95,7 +95,7 @@ namespace Showdomiliao
             Q8.Resposta03 = "Yuan";
             Q8.Resposta04 = "Iene";
             Q8.Resposta05 = "Won";
-            Q8.RespostaCorreta = "Iene";
+            Q8.RespostaCorreta = 4;
             Q8.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q8);
 
@@ -106,7 +106,7 @@ namespace Showdomiliao
             Q9.Resposta03 = "Charles Darwin";
             Q9.Resposta04 = "Gregor Mendel";
             Q9.Resposta05 = "Galileo Galilei";
-            Q9.RespostaCorreta = "Charles Darwin";
+            Q9.RespostaCorreta = 3;
             Q9.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q9);
 
@@ -117,7 +117,7 @@ namespace Showdomiliao
             Q10.Resposta03 = "Exosfera";
             Q10.Resposta04 = "Mesosfera";
             Q10.Resposta05 = "Ionosfera";
-            Q10.RespostaCorreta = "Estratosfera";
+            Q10.RespostaCorreta = 1;
             Q10.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q10);
 
@@ -128,7 +128,7 @@ namespace Showdomiliao
             Q11.Resposta03 = "Oceano Ártico";
             Q11.Resposta04 = "Oceano Pacífico";
             Q11.Resposta05 = "Oceano Antártico";
-            Q11.RespostaCorreta = "Oceano Pacífico";
+            Q11.RespostaCorreta = 4;
             Q11.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q11);
 
@@ -139,7 +139,7 @@ namespace Showdomiliao
             Q12.Resposta03 = "França";
             Q12.Resposta04 = "Itália";
             Q12.Resposta05 = "Portugal";
-            Q12.RespostaCorreta = "Itália";
+            Q12.RespostaCorreta = 4;
             Q12.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q12);
 
@@ -150,7 +150,7 @@ namespace Showdomiliao
             Q13.Resposta03 = "Galinha";
             Q13.Resposta04 = "Sapo";
             Q13.Resposta05 = "Crocodilo";
-            Q13.RespostaCorreta = "Golfinho";
+            Q13.RespostaCorreta = 2;
             Q13.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q13);
 
@@ -161,7 +161,7 @@ namespace Showdomiliao
             Q14.Resposta03 = "Vasco da Gama";
             Q14.Resposta04 = "Fernando de Magalhães";
             Q14.Resposta05 = "Amerigo Vespucci";
-            Q14.RespostaCorreta = "Pedro Álvares Cabral";
+            Q14.RespostaCorreta = 2;
             Q14.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q14);
 
@@ -172,7 +172,7 @@ namespace Showdomiliao
             Q15.Resposta03 = "Espírito Santo";
             Q15.Resposta04 = "Sergipe";
             Q15.Resposta05 = "Acre";
-            Q15.RespostaCorreta = "Sergipe";
+            Q15.RespostaCorreta = 4;
             Q15.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q15);
 
@@ -183,7 +183,7 @@ namespace Showdomiliao
             Q16.Resposta03 = "1889";
             Q16.Resposta04 = "1900";
             Q16.Resposta05 = "1922";
-            Q16.RespostaCorreta = "1889";
+            Q16.RespostaCorreta = 3;
             Q16.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q16);
 
@@ -194,8 +194,8 @@ namespace Showdomiliao
             Q17.Resposta03 = "Enxofre";
             Q17.Resposta04 = "Ferro";
             Q17.Resposta05 = "Cloro";
-            Q17.RespostaCorreta = "Ferro";
-            Q17.Q.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
+            Q17.RespostaCorreta = 4;
+            Q17.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q17);
 
             var Q18 = new Questao();
@@ -205,7 +205,7 @@ namespace Showdomiliao
             Q18.Resposta03 = "Deserto da Arábia";
             Q18.Resposta04 = "Deserto de Gobi";
             Q18.Resposta05 = "Antártida";
-            Q18.RespostaCorreta = "Antártida";
+            Q18.RespostaCorreta = 5;
             Q18.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q18);
 
@@ -216,7 +216,7 @@ namespace Showdomiliao
             Q19.Resposta03 = "Bartolomeu de Gusmão";
             Q19.Resposta04 = "Charles Lindbergh";
             Q19.Resposta05 = "Leonardo da Vinci";
-            Q19.RespostaCorreta = "Alberto Santos Dumont";
+            Q19.RespostaCorreta = 1;
             Q19.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q19);
 
@@ -227,7 +227,7 @@ namespace Showdomiliao
             Q20.Resposta03 = "Taiga";
             Q20.Resposta04 = "Floresta do Congo";
             Q20.Resposta05 = "Floresta de Borneo";
-            Q20.RespostaCorreta = "Floresta Amazônica";
+            Q20.RespostaCorreta = 1;
             Q20.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q20);
 
@@ -238,7 +238,7 @@ namespace Showdomiliao
             Q21.Resposta03 = "Roma";
             Q21.Resposta04 = "Madri";
             Q21.Resposta05 = "Lisboa";
-            Q21.RespostaCorreta = "Paris";
+            Q21.RespostaCorreta = 2;
             Q21.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q21);
 
@@ -249,7 +249,7 @@ namespace Showdomiliao
             Q22.Resposta03 = "Albert Einstein";
             Q22.Resposta04 = "Stephen Hawking";
             Q22.Resposta05 = "Marie Curie";
-            Q22.RespostaCorreta = "Albert Einstein";
+            Q22.RespostaCorreta = 3;
             Q22.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q22);
 
@@ -260,7 +260,7 @@ namespace Showdomiliao
             Q23.Resposta03 = "Kangchenjunga";
             Q23.Resposta04 = "Makalu";
             Q23.Resposta05 = "Lhotse";
-            Q23.RespostaCorreta = "Everest";
+            Q23.RespostaCorreta = 2;
             Q23.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q23);
 
@@ -271,7 +271,7 @@ namespace Showdomiliao
             Q24.Resposta03 = "Brasil";
             Q24.Resposta04 = "China";
             Q24.Resposta05 = "Indonésia";
-            Q24.RespostaCorreta = "China";
+            Q24.RespostaCorreta = 4;
             Q24.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q24);
 
@@ -282,7 +282,7 @@ namespace Showdomiliao
             Q25.Resposta03 = "Rinoceronte";
             Q25.Resposta04 = "Hipopótamo";
             Q25.Resposta05 = "Leão";
-            Q25.RespostaCorreta = "Elefante Africano";
+            Q25.RespostaCorreta = 1;
             Q25.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q25);
 
@@ -293,7 +293,7 @@ namespace Showdomiliao
             Q26.Resposta03 = "Buenos Aires";
             Q26.Resposta04 = "Caracas";
             Q26.Resposta05 = "Bogotá";
-            Q26.RespostaCorreta = "Buenos Aires";
+            Q26.RespostaCorreta = 3;
             Q26.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q26);
 
@@ -304,7 +304,7 @@ namespace Showdomiliao
             Q27.Resposta03 = "Michelangelo";
             Q27.Resposta04 = "Claude Monet";
             Q27.Resposta05 = "Pablo Picasso";
-            Q27.RespostaCorreta = "Michelangelo";
+            Q27.RespostaCorreta = 3;
             Q27.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q27);
 
@@ -315,7 +315,7 @@ namespace Showdomiliao
             Q28.Resposta03 = "Ferro";
             Q28.Resposta04 = "Cobre";
             Q28.Resposta05 = "Mercúrio";
-            Q28.RespostaCorreta = "Ferro";
+            Q28.RespostaCorreta = 3;
             Q28.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q28);
 
@@ -326,7 +326,7 @@ namespace Showdomiliao
             Q29.Resposta03 = "Neil Armstrong";
             Q29.Resposta04 = "Michael Collins";
             Q29.Resposta05 = "Alan Shepard";
-            Q29.RespostaCorreta = "Neil Armstrong";
+            Q29.RespostaCorreta = 3;
             Q29.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q29);
 
@@ -337,7 +337,7 @@ namespace Showdomiliao
             Q30.Resposta03 = "Colômbia";
             Q30.Resposta04 = "Brasil";
             Q30.Resposta05 = "Chile";
-            Q30.RespostaCorreta = "Brasil";
+            Q30.RespostaCorreta = 4;
             Q30.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q30);
 
@@ -348,7 +348,7 @@ namespace Showdomiliao
             Q31.Resposta03 = "Inglês";
             Q31.Resposta04 = "Francês";
             Q31.Resposta05 = "Árabe";
-            Q31.RespostaCorreta = "Chinês";
+            Q31.RespostaCorreta = 2;
             Q31.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q31);
 
@@ -359,7 +359,7 @@ namespace Showdomiliao
             Q32.Resposta03 = "6";
             Q32.Resposta04 = "7";
             Q32.Resposta05 = "8";
-            Q32.RespostaCorreta = "7";
+            Q32.RespostaCorreta = 4;
             Q32.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q32);
 
@@ -370,7 +370,7 @@ namespace Showdomiliao
             Q33.Resposta03 = "Austrália";
             Q33.Resposta04 = "Islândia";
             Q33.Resposta05 = "Nova Zelândia";
-            Q33.RespostaCorreta = "Groenlândia";
+            Q33.RespostaCorreta = 2;
             Q33.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q33);
 
@@ -381,7 +381,7 @@ namespace Showdomiliao
             Q34.Resposta03 = "Espanha";
             Q34.Resposta04 = "Rússia";
             Q34.Resposta05 = "Itália";
-            Q34.RespostaCorreta = "Rússia";
+            Q34.RespostaCorreta = 4;
             Q34.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q34);
 
@@ -392,7 +392,7 @@ namespace Showdomiliao
             Q35.Resposta03 = "Espírito Santo";
             Q35.Resposta04 = "São Paulo";
             Q35.Resposta05 = "Paraná";
-            Q35.RespostaCorreta = "São Paulo";
+            Q35.RespostaCorreta = 4;
             Q35.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q35);
 
@@ -403,7 +403,7 @@ namespace Showdomiliao
             Q36.Resposta03 = "Getúlio Vargas";
             Q36.Resposta04 = "Juscelino Kubitschek";
             Q36.Resposta05 = "Floriano Peixoto";
-            Q36.RespostaCorreta = "Dom Pedro I";
+            Q36.RespostaCorreta = 1;
             Q36.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q36);
 
@@ -414,7 +414,7 @@ namespace Showdomiliao
             Q37.Resposta03 = "26";
             Q37.Resposta04 = "27";
             Q37.Resposta05 = "28";
-            Q37.RespostaCorreta = "26";
+            Q37.RespostaCorreta = 3;
             Q37.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q37);
 
@@ -425,7 +425,7 @@ namespace Showdomiliao
             Q38.Resposta03 = "Átomo";
             Q38.Resposta04 = "Tecido";
             Q38.Resposta05 = "Organelo";
-            Q38.RespostaCorreta = "Célula";
+            Q38.RespostaCorreta = 2;
             Q38.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q38);
 
@@ -436,7 +436,7 @@ namespace Showdomiliao
             Q39.Resposta03 = "China";
             Q39.Resposta04 = "México";
             Q39.Resposta05 = "Brasil";
-            Q39.RespostaCorreta = "Egito";
+            Q39.RespostaCorreta = 2;
             Q39.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q39);
 
@@ -447,7 +447,7 @@ namespace Showdomiliao
             Q40.Resposta03 = "8";
             Q40.Resposta04 = "10";
             Q40.Resposta05 = "12";
-            Q40.RespostaCorreta = "6";
+            Q40.RespostaCorreta = 2;
             Q40.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q40);
 
@@ -458,7 +458,7 @@ namespace Showdomiliao
             Q41.Resposta03 = "1969";
             Q41.Resposta04 = "1972";
             Q41.Resposta05 = "1975";
-            Q41.RespostaCorreta = "1969";
+            Q41.RespostaCorreta = 3;
             Q41.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q41);
 
@@ -469,7 +469,7 @@ namespace Showdomiliao
             Q42.Resposta03 = "Mitose";
             Q42.Resposta04 = "Fermentação";
             Q42.Resposta05 = "Fusão nuclear";
-            Q42.RespostaCorreta = "Mitose";
+            Q42.RespostaCorreta = 3;
             Q42.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q42);
 
@@ -480,7 +480,7 @@ namespace Showdomiliao
             Q43.Resposta03 = "1789";
             Q43.Resposta04 = "1804";
             Q43.Resposta05 = "1848";
-            Q43.RespostaCorreta = "1789";
+            Q43.RespostaCorreta = 3;
             Q43.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q43);
 
@@ -491,7 +491,7 @@ namespace Showdomiliao
             Q44.Resposta03 = "George Washington";
             Q44.Resposta04 = "John Adams";
             Q44.Resposta05 = "Franklin D. Roosevelt";
-            Q44.RespostaCorreta = "George Washington";
+            Q44.RespostaCorreta = 3;
             Q44.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q44);
 
@@ -502,7 +502,7 @@ namespace Showdomiliao
             Q45.Resposta03 = "Coração";
             Q45.Resposta04 = "Cérebro";
             Q45.Resposta05 = "Rins";
-            Q45.RespostaCorreta = "Coração";
+            Q45.RespostaCorreta = 3;
             Q45.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q45);
 
@@ -513,7 +513,7 @@ namespace Showdomiliao
             Q46.Resposta03 = "Mercúrio";
             Q46.Resposta04 = "Netuno";
             Q46.Resposta05 = "Plutão";
-            Q46.RespostaCorreta = "Mercúrio";
+            Q46.RespostaCorreta = 3;
             Q46.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q46);
 
@@ -524,7 +524,7 @@ namespace Showdomiliao
             Q47.Resposta03 = "Atenas";
             Q47.Resposta04 = "Roma";
             Q47.Resposta05 = "Istambul";
-            Q47.RespostaCorreta = "Roma";
+            Q47.RespostaCorreta = 4;
             Q47.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q47);
 
@@ -535,7 +535,7 @@ namespace Showdomiliao
             Q48.Resposta03 = "Vasco da Gama";
             Q48.Resposta04 = "Fernão de Magalhães";
             Q48.Resposta05 = "Bartolomeu Dias";
-            Q48.RespostaCorreta = "Pedro Álvares Cabral";
+            Q48.RespostaCorreta = 1;
             Q48.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q48);
 
@@ -546,7 +546,7 @@ namespace Showdomiliao
             Q49.Resposta03 = "Fe";
             Q49.Resposta04 = "Hg";
             Q49.Resposta05 = "Pb";
-            Q49.RespostaCorreta = "Au";
+            Q49.RespostaCorreta = 2;
             Q49.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q49);
 
@@ -557,7 +557,7 @@ namespace Showdomiliao
             Q50.Resposta03 = "Oceano Pacífico";
             Q50.Resposta04 = "Oceano Ártico";
             Q50.Resposta05 = "Oceano Antártico";
-            Q50.RespostaCorreta = "Oceano Pacífico";
+            Q50.RespostaCorreta = 3;
             Q50.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q50);
 
@@ -568,7 +568,7 @@ namespace Showdomiliao
             Q51.Resposta03 = "Urano";
             Q51.Resposta04 = "Júpiter";
             Q51.Resposta05 = "Netuno";
-            Q51.RespostaCorreta = "Júpiter";
+            Q51.RespostaCorreta = 4;
             Q51.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q51);
 
@@ -579,7 +579,7 @@ namespace Showdomiliao
             Q52.Resposta03 = "1916";
             Q52.Resposta04 = "1918";
             Q52.Resposta05 = "1920";
-            Q52.RespostaCorreta = "1914";
+            Q52.RespostaCorreta = 2;
             Q52.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q52);
 
@@ -590,7 +590,7 @@ namespace Showdomiliao
             Q53.Resposta03 = "Santa Catarina";
             Q53.Resposta04 = "Rio Grande do Sul";
             Q53.Resposta05 = "Mato Grosso do Sul";
-            Q53.RespostaCorreta = "Rio Grande do Sul";
+            Q53.RespostaCorreta = 4;
             Q53.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q53);
 
@@ -601,7 +601,7 @@ namespace Showdomiliao
             Q54.Resposta03 = "Sol";
             Q54.Resposta04 = "Betelgeuse";
             Q54.Resposta05 = "Proxima Centauri";
-            Q54.RespostaCorreta = "Sol";
+            Q54.RespostaCorreta = 3;
             Q54.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q54);
 
@@ -612,7 +612,7 @@ namespace Showdomiliao
             Q55.Resposta03 = "Estômago";
             Q55.Resposta04 = "Fígado";
             Q55.Resposta05 = "Rins";
-            Q55.RespostaCorreta = "Estômago";
+            Q55.RespostaCorreta = 3;
             Q55.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q55);
 
@@ -623,7 +623,7 @@ namespace Showdomiliao
             Q56.Resposta03 = "Atenas";
             Q56.Resposta04 = "Roma";
             Q56.Resposta05 = "Berlim";
-            Q56.RespostaCorreta = "Atenas";
+            Q56.RespostaCorreta = 3;
             Q56.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q56);
 
@@ -634,7 +634,7 @@ namespace Showdomiliao
             Q57.Resposta03 = "1989";
             Q57.Resposta04 = "1991";
             Q57.Resposta05 = "1993";
-            Q57.RespostaCorreta = "1989";
+            Q57.RespostaCorreta = 3;
             Q57.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q57);
 
@@ -645,7 +645,7 @@ namespace Showdomiliao
             Q58.Resposta03 = "CO2";
             Q58.Resposta04 = "NaCl";
             Q58.Resposta05 = "CH4";
-            Q58.RespostaCorreta = "H2O";
+            Q58.RespostaCorreta = 1;
             Q58.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q58);
 
@@ -656,7 +656,7 @@ namespace Showdomiliao
             Q59.Resposta03 = "América do Norte";
             Q59.Resposta04 = "Oceania";
             Q59.Resposta05 = "África";
-            Q59.RespostaCorreta = "Oceania";
+            Q59.RespostaCorreta = 4;
             Q59.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q59);
 
@@ -667,7 +667,7 @@ namespace Showdomiliao
             Q60.Resposta03 = "Júpiter";
             Q60.Resposta04 = "Saturno";
             Q60.Resposta05 = "Mercúrio";
-            Q60.RespostaCorreta = "Marte";
+            Q60.RespostaCorreta = 2;
             Q60.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q60);
 
@@ -678,7 +678,7 @@ namespace Showdomiliao
             Q61.Resposta03 = "Wolfgang Amadeus Mozart";
             Q61.Resposta04 = "Frédéric Chopin";
             Q61.Resposta05 = "Antonio Vivaldi";
-            Q61.RespostaCorreta = "Ludwig van Beethoven";
+            Q61.RespostaCorreta = 1;
             Q61.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q61);
 
@@ -689,7 +689,7 @@ namespace Showdomiliao
             Q62.Resposta03 = "Euro";
             Q62.Resposta04 = "Libra Esterlina";
             Q62.Resposta05 = "Yuan";
-            Q62.RespostaCorreta = "Iene";
+            Q62.RespostaCorreta = 1;
             Q62.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q62);
 
@@ -700,7 +700,7 @@ namespace Showdomiliao
             Q63.Resposta03 = "O2";
             Q63.Resposta04 = "H2O";
             Q63.Resposta05 = "CH4";
-            Q63.RespostaCorreta = "CO2";
+            Q63.RespostaCorreta = 2;
             Q63.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q63);
 
@@ -711,7 +711,7 @@ namespace Showdomiliao
             Q64.Resposta03 = "1500";
             Q64.Resposta04 = "1550";
             Q64.Resposta05 = "1600";
-            Q64.RespostaCorreta = "1500";
+            Q64.RespostaCorreta = 3;
             Q64.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q64);
 
@@ -722,7 +722,7 @@ namespace Showdomiliao
             Q66.Resposta03 = "Leonardo da Vinci";
             Q66.Resposta04 = "Claude Monet";
             Q66.Resposta05 = "Salvador Dalí";
-            Q66.RespostaCorreta = "Leonardo da Vinci";
+            Q66.RespostaCorreta = 3;
             Q66.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q66);
 
@@ -733,7 +733,7 @@ namespace Showdomiliao
             Q67.Resposta03 = "1812";
             Q67.Resposta04 = "1848";
             Q67.Resposta05 = "1865";
-            Q67.RespostaCorreta = "1776";
+            Q67.RespostaCorreta = 1;
             Q67.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q67);
 
@@ -744,7 +744,7 @@ namespace Showdomiliao
             Q68.Resposta03 = "Nitrogênio";
             Q68.Resposta04 = "Carbono";
             Q68.Resposta05 = "Hélio";
-            Q68.RespostaCorreta = "Hidrogênio";
+            Q68.RespostaCorreta = 2;
             Q68.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q68);
 
@@ -755,7 +755,7 @@ namespace Showdomiliao
             Q69.Resposta03 = "William Shakespeare";
             Q69.Resposta04 = "Jorge Luis Borges";
             Q69.Resposta05 = "Mario Vargas Llosa";
-            Q69.RespostaCorreta = "Miguel de Cervantes";
+            Q69.RespostaCorreta = 1;
             Q69.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q69);
 
@@ -766,7 +766,7 @@ namespace Showdomiliao
             Q70.Resposta03 = "Deserto da Arábia";
             Q70.Resposta04 = "Deserto da Antártica";
             Q70.Resposta05 = "Deserto de Kalahari";
-            Q70.RespostaCorreta = "Deserto da Antártica";
+            Q70.RespostaCorreta = 2;
             Q70.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q70);
 
@@ -777,7 +777,7 @@ namespace Showdomiliao
             Q71.Resposta03 = "Espanhol";
             Q71.Resposta04 = "Hindi";
             Q71.Resposta05 = "Árabe";
-            Q71.RespostaCorreta = "Chinês mandarim";
+            Q71.RespostaCorreta = 2;
             Q71.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q71);
 
@@ -788,7 +788,7 @@ namespace Showdomiliao
             Q72.Resposta03 = "Oceano Pacífico";
             Q72.Resposta04 = "Oceano Ártico";
             Q72.Resposta05 = "Oceano Antártico";
-            Q72.RespostaCorreta = "Oceano Pacífico";
+            Q72.RespostaCorreta = 3;
             Q72.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q72);
 
@@ -799,7 +799,7 @@ namespace Showdomiliao
             Q73.Resposta03 = "Fusão nuclear";
             Q73.Resposta04 = "Reação ácido-base";
             Q73.Resposta05 = "Oxidação";
-            Q73.RespostaCorreta = "Fusão nuclear";
+            Q73.RespostaCorreta = 3;
             Q73.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q73);
 
@@ -810,7 +810,7 @@ namespace Showdomiliao
             Q74.Resposta03 = "George R.R. Martin";
             Q74.Resposta04 = "C.S. Lewis";
             Q74.Resposta05 = "H.P. Lovecraft";
-            Q74.RespostaCorreta = "J.R.R. Tolkien";
+            Q74.RespostaCorreta = 1;
             Q74.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q74);
 
@@ -821,7 +821,7 @@ namespace Showdomiliao
             Q75.Resposta03 = "Baleia Azul";
             Q75.Resposta04 = "Orca";
             Q75.Resposta05 = "Girafa";
-            Q75.RespostaCorreta = "Baleia Azul";
+            Q75.RespostaCorreta = 3;
             Q75.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q75);
 
@@ -832,7 +832,7 @@ namespace Showdomiliao
             Q76.Resposta03 = "Estados Unidos";
             Q76.Resposta04 = "Indonésia";
             Q76.Resposta05 = "Paquistão";
-            Q76.RespostaCorreta = "China";
+            Q76.RespostaCorreta = 2;
             Q76.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q76);
 
@@ -843,7 +843,7 @@ namespace Showdomiliao
             Q77.Resposta03 = "Inglês";
             Q77.Resposta04 = "Francês";
             Q77.Resposta05 = "Italiano";
-            Q77.RespostaCorreta = "Português";
+            Q77.RespostaCorreta = 2;
             Q77.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q77);
 
@@ -854,7 +854,7 @@ namespace Showdomiliao
             Q78.Resposta03 = "Wilhelm Wundt";
             Q78.Resposta04 = "Ivan Pavlov";
             Q78.Resposta05 = "Erik Erikson";
-            Q78.RespostaCorreta = "Sigmund Freud";
+            Q78.RespostaCorreta = 1;
             Q78.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q78);
 
@@ -865,7 +865,7 @@ namespace Showdomiliao
             Q79.Resposta03 = "C3H8";
             Q79.Resposta04 = "C4H10";
             Q79.Resposta05 = "C5H12";
-            Q79.RespostaCorreta = "CH4";
+            Q79.RespostaCorreta = 1;
             Q79.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q79);
 
@@ -876,7 +876,7 @@ namespace Showdomiliao
             Q80.Resposta03 = "Madri";
             Q80.Resposta04 = "Roma";
             Q80.Resposta05 = "Berlim";
-            Q80.RespostaCorreta = "Paris";
+            Q80.RespostaCorreta = 1;
             Q80.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q80);
 
@@ -887,7 +887,7 @@ namespace Showdomiliao
             Q81.Resposta03 = "Deserto de Gobi";
             Q81.Resposta04 = "Deserto de Kalahari";
             Q81.Resposta05 = "Deserto de Mojave";
-            Q81.RespostaCorreta = "Deserto do Saara";
+            Q81.RespostaCorreta = 1;
             Q81.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q81);
 
@@ -898,7 +898,7 @@ namespace Showdomiliao
             Q82.Resposta03 = "Nikola Tesla";
             Q82.Resposta04 = "Michael Faraday";
             Q82.Resposta05 = "James Clerk Maxwell";
-            Q82.RespostaCorreta = "Alexander Graham Bell";
+            Q82.RespostaCorreta = 1;
             Q82.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q82);
 
@@ -909,7 +909,7 @@ namespace Showdomiliao
             Q83.Resposta03 = "Chicago";
             Q83.Resposta04 = "Houston";
             Q83.Resposta05 = "Philadelphia";
-            Q83.RespostaCorreta = "Los Angeles";
+            Q83.RespostaCorreta = 2;
             Q83.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q83);
 
@@ -920,7 +920,7 @@ namespace Showdomiliao
             Q84.Resposta03 = "Hélio";
             Q84.Resposta04 = "Sódio";
             Q84.Resposta05 = "Magnésio";
-            Q84.RespostaCorreta = "Lítio";
+            Q84.RespostaCorreta = 1;
             Q84.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q84);
 
@@ -931,7 +931,7 @@ namespace Showdomiliao
             Q85.Resposta03 = "Ásia";
             Q85.Resposta04 = "América do Sul";
             Q85.Resposta05 = "Oceania";
-            Q85.RespostaCorreta = "Antártica";
+            Q85.RespostaCorreta = 2;
             Q85.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q85);
 
@@ -942,7 +942,7 @@ namespace Showdomiliao
             Q86.Resposta03 = "Transporte de nutrientes e oxigênio";
             Q86.Resposta04 = "Produção de hormônios";
             Q86.Resposta05 = "Excreção de resíduos";
-            Q86.RespostaCorreta = "Transporte de nutrientes e oxigênio";
+            Q86.RespostaCorreta = 3;
             Q86.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q86);
 
@@ -953,7 +953,7 @@ namespace Showdomiliao
             Q87.Resposta03 = "Niels Bohr";
             Q87.Resposta04 = "Galileo Galilei";
             Q87.Resposta05 = "Michael Faraday";
-            Q87.RespostaCorreta = "Albert Einstein";
+            Q87.RespostaCorreta = 2;
             Q87.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q87);
 
@@ -964,7 +964,7 @@ namespace Showdomiliao
             Q88.Resposta03 = "Veneza";
             Q88.Resposta04 = "Florença";
             Q88.Resposta05 = "Nápoles";
-            Q88.RespostaCorreta = "Roma";
+            Q88.RespostaCorreta = 1;
             Q88.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q88);
 
@@ -975,7 +975,7 @@ namespace Showdomiliao
             Q89.Resposta03 = "Lago Malawi";
             Q89.Resposta04 = "Lago Chad";
             Q89.Resposta05 = "Lago Edward";
-            Q89.RespostaCorreta = "Lago Vitória";
+            Q89.RespostaCorreta = 1;
             Q89.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q89);
 
@@ -986,7 +986,7 @@ namespace Showdomiliao
             Q90.Resposta03 = "Dióxido de carbono";
             Q90.Resposta04 = "Metano";
             Q90.Resposta05 = "Nitrogênio";
-            Q90.RespostaCorreta = "Dióxido de carbono";
+            Q90.RespostaCorreta = 3;
             Q90.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q90);
 
@@ -997,7 +997,7 @@ namespace Showdomiliao
             Q91.Resposta03 = "Himalaia";
             Q91.Resposta04 = "Alpes";
             Q91.Resposta05 = "Apalaches";
-            Q91.RespostaCorreta = "Himalaia";
+            Q91.RespostaCorreta = 3;
             Q91.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q91);
 
@@ -1008,7 +1008,7 @@ namespace Showdomiliao
             Q92.Resposta03 = "Ray Bradbury";
             Q92.Resposta04 = "Margaret Atwood";
             Q92.Resposta05 = "H.G. Wells";
-            Q92.RespostaCorreta = "George Orwell";
+            Q92.RespostaCorreta = 1;
             Q92.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q92);
 
@@ -1019,7 +1019,7 @@ namespace Showdomiliao
             Q93.Resposta03 = "NaCl";
             Q93.Resposta04 = "CH4";
             Q93.Resposta05 = "O2";
-            Q93.RespostaCorreta = "H2O";
+            Q93.RespostaCorreta = 1;
             Q93.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q93);
 
@@ -1030,7 +1030,7 @@ namespace Showdomiliao
             Q94.Resposta03 = "Março";
             Q94.Resposta04 = "Abril";
             Q94.Resposta05 = "Maio";
-            Q94.RespostaCorreta = "Janeiro";
+            Q94.RespostaCorreta = 1;
             Q94.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q94);
 
@@ -1041,7 +1041,7 @@ namespace Showdomiliao
             Q95.Resposta03 = "Vietnã";
             Q95.Resposta04 = "Honduras";
             Q95.Resposta05 = "Etiópia";
-            Q95.RespostaCorreta = "Brasil";
+            Q95.RespostaCorreta = 1;
             Q95.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q95);
 
@@ -1052,7 +1052,7 @@ namespace Showdomiliao
             Q96.Resposta03 = "Celsius";
             Q96.Resposta04 = "Réaumur";
             Q96.Resposta05 = "Rankine";
-            Q96.RespostaCorreta = "Kelvin";
+            Q96.RespostaCorreta = 2;
             Q96.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q96);
 
@@ -1063,7 +1063,7 @@ namespace Showdomiliao
             Q97.Resposta03 = "Sistema Sigma";
             Q97.Resposta04 = "Sistema Solar";
             Q97.Resposta05 = "Sistema Galáctico";
-            Q97.RespostaCorreta = "Sistema Solar";
+            Q97.RespostaCorreta = 4;
             Q97.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q97);
 
@@ -1074,7 +1074,7 @@ namespace Showdomiliao
             Q98.Resposta03 = "Abacate";
             Q98.Resposta04 = "Pimentão";
             Q98.Resposta05 = "Cenoura";
-            Q98.RespostaCorreta = "Abacate";
+            Q98.RespostaCorreta = 3;
             Q98.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q98);
 
@@ -1085,7 +1085,7 @@ namespace Showdomiliao
             Q99.Resposta03 = "Oximetro";
             Q99.Resposta04 = "Estetoscópio";
             Q99.Resposta05 = "Glicosímetro";
-            Q99.RespostaCorreta = "Esfigmomanômetro";
+            Q99.RespostaCorreta = 2;
             Q99.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q99);
 
@@ -1096,7 +1096,7 @@ namespace Showdomiliao
             Q100.Resposta03 = "Zebra";
             Q100.Resposta04 = "Cavalo";
             Q100.Resposta05 = "Camelo";
-            Q100.RespostaCorreta = "Girafa";
+            Q100.RespostaCorreta = 1;
             Q100.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q100);
 

@@ -2,13 +2,34 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	Gerenciador gerenciador;
 
 	public MainPage()
 	{
 		InitializeComponent();
+		gerenciador = new Gerenciador(Labelpergunta, Button1, Button2, Button3, Button4, Button5);
+		gerenciador.ProximaQuestao();
 	}
-
+	void OnButtonResposta01ButtonClicked(object sender, EventArgs args)
+	{
+		gerenciador.VerfiicaCorreto(1);
+	}
+	void OnButtonResposta02ButtonClicked(object sender, EventArgs args)
+	{
+		gerenciador.VerfiicaCorreto(2);
+	}
+	void OnButtonResposta03ButtonClicked(object sender, EventArgs args)
+	{
+		gerenciador.VerfiicaCorreto(3);
+	}
+	void OnButtonResposta04ButtonClicked(object sender, EventArgs args)
+	{
+		gerenciador.VerfiicaCorreto(4);
+	}
+	void OnButtonResposta05ButtonClicked(object sender, EventArgs args)
+	{
+		gerenciador.VerfiicaCorreto(5);
+	}
 
 }
 
