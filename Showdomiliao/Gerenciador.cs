@@ -1106,7 +1106,7 @@ namespace Showdomiliao
         {
             var numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count);
             while (ListaQuestoesRespondidas.Contains(numRandomico))
-                numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count - 1);
+                numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count);
 
             ListaQuestoesRespondidas.Add(numRandomico);
             QuestaoAtual = ListaQuestoes[numRandomico];

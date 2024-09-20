@@ -1,16 +1,17 @@
-﻿namespace Showdomiliao;
+namespace Showdomiliao;
 
 public partial class MainPage : ContentPage
 {
-	Gerenciador gerenciador;
+    Gerenciador gerenciador;
 
-	public MainPage()
-	{
-		InitializeComponent();
-		gerenciador = new Gerenciador(Labelpergunta, Button1, Button2, Button3, Button4, Button5);
+    public MainPage()
+    {
+        InitializeComponent();
+        gerenciador = new Gerenciador(Labelpergunta, Button1, Button2, Button3, Button4, Button5);
 		gerenciador.ProximaQuestao();
-	}
-	void OnButtonResposta01ButtonClicked(object sender, EventArgs args)
+    }   
+
+    void OnButtonResposta01ButtonClicked(object sender, EventArgs args)
 	{
 		gerenciador.VerfiicaCorreto(1);
 	}
@@ -30,6 +31,4 @@ public partial class MainPage : ContentPage
 	{
 		gerenciador.VerfiicaCorreto(5);
 	}
-
 }
-
