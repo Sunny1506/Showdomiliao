@@ -4,14 +4,83 @@ namespace Showdomiliao
     {
         List<Questao> ListaQuestoes = new List<Questao>();
         List<int> ListaQuestoesRespondidas = new List<int>();
+        public int Pontuacao { get; private set; }
+        Label labelPontuacao;
+        Label labelNivel;
         Questao QuestaoAtual;
-        public Gerenciador(Label labelpergunta, Button button1, Button button2, Button button3, Button button4, Button button5)
+
+        void AdicionaPontuacao(int n)
+        {
+            if (n == 1)
+                Pontuacao = 1000;
+            else if (n == 2)
+                Pontuacao = 2000;
+            else if (n == 3)
+                Pontuacao = 5000;
+            else if (n == 4)
+                Pontuacao = 10000;
+            else if (n == 5)
+                Pontuacao = 20000;
+            else if (n == 6)
+                Pontuacao = 50000;
+            else if (n == 7)
+                Pontuacao = 10000;
+            else if (n == 8)
+                Pontuacao = 20000;
+            else if (n == 9)
+                Pontuacao = 500000;
+            else if (n == 10)
+                Pontuacao = 100000;
+        }
+        public void ProximaQuestao()
+        {
+            var numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count -1);
+            while (ListaQuestoesRespondidas.Contains(numRandomico))
+                numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count -1);
+
+            ListaQuestoesRespondidas.Add(numRandomico);
+            QuestaoAtual = ListaQuestoes[numRandomico];
+            QuestaoAtual.Desenhar();
+        }
+
+        public async void VerfiicaCorreto(int RespostaSelecionada)
+        {
+            if (QuestaoAtual.VerificaResposta(RespostaSelecionada))
+            {
+                await Task.Delay(1500);
+                AdicionaPontuacao(NivelAtual);
+                NivelAtual++;
+                ProximaQuestao();
+                labelPontuacao.Text = "Pontuação:R$" + Pontuacao.ToString();
+                labelNivel.Text = "Nível:" + NivelAtual.ToString();
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Game Over", "Você perdeu!", "Ok");
+                Inicializar();
+            }
+
+        }
+
+        int NivelAtual = 0;
+
+        void Inicializar()
+        {
+            Pontuacao = 0;
+            NivelAtual = 0;
+            ProximaQuestao();
+        }
+        public Gerenciador(Label labelpergunta, Button button1, Button button2, Button button3, Button button4, Button button5, Label labelPoint, Label labelNivel)
         {
             CriarQuestoes(labelpergunta, button1, button2, button3, button4, button5);
+            labelPontuacao = labelPoint;
+            this.labelNivel = labelNivel;
+
         }
         void CriarQuestoes(Label labelpergunta, Button button1, Button button2, Button button3, Button button4, Button button5)
         {
             var Q1 = new Questao();
+            Q1.Nivelresposta = 1;
             Q1.Pergunta = "Qual é o planeta mais próximo do Sol?";
             Q1.Resposta01 = "Vênus";
             Q1.Resposta02 = "Marte";
@@ -23,6 +92,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q1);
 
             var Q2 = new Questao();
+            Q2.Nivelresposta = 1;
             Q2.Pergunta = "Quem escreveu 'Dom Quixote'?";
             Q2.Resposta01 = "William Shakespeare";
             Q2.Resposta02 = "Miguel de Cervantes";
@@ -34,6 +104,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q2);
 
             var Q3 = new Questao();
+            Q3.Nivelresposta = 1;
             Q3.Pergunta = "Qual é a capital da Austrália?";
             Q3.Resposta01 = "Sydney";
             Q3.Resposta02 = "Melbourne";
@@ -45,6 +116,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q3);
 
             var Q4 = new Questao();
+            Q4.Nivelresposta = 1;
             Q4.Pergunta = "Quem foi o primeiro presidente do Brasil?";
             Q4.Resposta01 = "Getúlio Vargas";
             Q4.Resposta02 = "Juscelino Kubitschek";
@@ -56,6 +128,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q4);
 
             var Q5 = new Questao();
+            Q5.Nivelresposta = 1;
             Q5.Pergunta = "Qual é a fórmula química da água?";
             Q5.Resposta01 = "H2O2";
             Q5.Resposta02 = "CO2";
@@ -67,6 +140,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q5);
 
             var Q6 = new Questao();
+            Q6.Nivelresposta = 1;
             Q6.Pergunta = "Quem pintou a Mona Lisa?";
             Q6.Resposta01 = "Pablo Picasso";
             Q6.Resposta02 = "Leonardo da Vinci";
@@ -78,6 +152,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q6);
 
             var Q7 = new Questao();
+            Q7.Nivelresposta = 1;
             Q7.Pergunta = "Qual o maior país em extensão territorial?";
             Q7.Resposta01 = "China";
             Q7.Resposta02 = "Canadá";
@@ -89,6 +164,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q7);
 
             var Q8 = new Questao();
+            Q8.Nivelresposta = 1;
             Q8.Pergunta = "Qual a principal moeda do Japão?";
             Q8.Resposta01 = "Dólar";
             Q8.Resposta02 = "Euro";
@@ -100,6 +176,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q8);
 
             var Q9 = new Questao();
+            Q9.Nivelresposta = 1;
             Q9.Pergunta = "Quem é o autor da teoria da evolução?";
             Q9.Resposta01 = "Isaac Newton";
             Q9.Resposta02 = "Albert Einstein";
@@ -111,6 +188,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q9);
 
             var Q10 = new Questao();
+            Q10.Nivelresposta = 1;
             Q10.Pergunta = "Qual a camada da atmosfera responsável pela proteção contra raios UV?";
             Q10.Resposta01 = "Estratosfera";
             Q10.Resposta02 = "Troposfera";
@@ -122,6 +200,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q10);
 
             var Q11 = new Questao();
+            Q11.Nivelresposta = 2;
             Q11.Pergunta = "Qual é o maior oceano do mundo?";
             Q11.Resposta01 = "Oceano Atlântico";
             Q11.Resposta02 = "Oceano Índico";
@@ -133,6 +212,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q11);
 
             var Q12 = new Questao();
+            Q12.Nivelresposta = 2;
             Q12.Pergunta = "Qual país é conhecido por ter o formato de uma bota?";
             Q12.Resposta01 = "Espanha";
             Q12.Resposta02 = "Grécia";
@@ -144,6 +224,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q12);
 
             var Q13 = new Questao();
+            Q13.Nivelresposta = 2;
             Q13.Pergunta = "Qual desses animais é um mamífero?";
             Q13.Resposta01 = "Cobra";
             Q13.Resposta02 = "Golfinho";
@@ -155,6 +236,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q13);
 
             var Q14 = new Questao();
+            Q14.Nivelresposta = 2;
             Q14.Pergunta = "Quem descobriu o Brasil?";
             Q14.Resposta01 = "Cristóvão Colombo";
             Q14.Resposta02 = "Pedro Álvares Cabral";
@@ -166,6 +248,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q14);
 
             var Q15 = new Questao();
+            Q15.Nivelresposta = 2;
             Q15.Pergunta = "Qual é o menor estado do Brasil em extensão territorial?";
             Q15.Resposta01 = "Alagoas";
             Q15.Resposta02 = "Rio de Janeiro";
@@ -177,6 +260,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q15);
 
             var Q16 = new Questao();
+            Q16.Nivelresposta = 2;
             Q16.Pergunta = "Em que ano ocorreu a Proclamação da República no Brasil?";
             Q16.Resposta01 = "1808";
             Q16.Resposta02 = "1822";
@@ -188,6 +272,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q16);
 
             var Q17 = new Questao();
+            Q17.Nivelresposta = 2;
             Q17.Pergunta = "Qual desses elementos químicos é um metal?";
             Q17.Resposta01 = "Hélio";
             Q17.Resposta02 = "Oxigênio";
@@ -199,6 +284,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q17);
 
             var Q18 = new Questao();
+            Q18.Nivelresposta = 2;
             Q18.Pergunta = "Qual é o maior deserto do mundo?";
             Q18.Resposta01 = "Saara";
             Q18.Resposta02 = "Kalahari";
@@ -210,6 +296,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q18);
 
             var Q19 = new Questao();
+            Q19.Nivelresposta = 2;
             Q19.Pergunta = "Quem é conhecido como o 'pai da aviação' no Brasil?";
             Q19.Resposta01 = "Alberto Santos Dumont";
             Q19.Resposta02 = "Irmãos Wright";
@@ -221,6 +308,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q19);
 
             var Q20 = new Questao();
+            Q20.Nivelresposta = 2;
             Q20.Pergunta = "Qual é o nome da maior floresta tropical do mundo?";
             Q20.Resposta01 = "Floresta Amazônica";
             Q20.Resposta02 = "Floresta Negra";
@@ -232,6 +320,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q20);
 
             var Q21 = new Questao();
+            Q21.Nivelresposta = 3;
             Q21.Pergunta = "Qual a capital da França?";
             Q21.Resposta01 = "Berlim";
             Q21.Resposta02 = "Paris";
@@ -243,6 +332,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q21);
 
             var Q22 = new Questao();
+            Q22.Nivelresposta = 3;
             Q22.Pergunta = "Quem desenvolveu a teoria da relatividade?";
             Q22.Resposta01 = "Isaac Newton";
             Q22.Resposta02 = "Nikola Tesla";
@@ -254,6 +344,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q22);
 
             var Q23 = new Questao();
+            Q23.Nivelresposta = 3;
             Q23.Pergunta = "Qual a montanha mais alta do mundo?";
             Q23.Resposta01 = "K2";
             Q23.Resposta02 = "Everest";
@@ -265,6 +356,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q23);
 
             var Q24 = new Questao();
+            Q24.Nivelresposta = 3;
             Q24.Pergunta = "Qual é o país mais populoso do mundo?";
             Q24.Resposta01 = "Índia";
             Q24.Resposta02 = "Estados Unidos";
@@ -276,6 +368,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q24);
 
             var Q25 = new Questao();
+            Q25.Nivelresposta = 3;
             Q25.Pergunta = "Qual é o maior animal terrestre?";
             Q25.Resposta01 = "Elefante Africano";
             Q25.Resposta02 = "Girafa";
@@ -287,6 +380,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q25);
 
             var Q26 = new Questao();
+            Q26.Nivelresposta = 3;
             Q26.Pergunta = "Qual a capital da Argentina?";
             Q26.Resposta01 = "Santiago";
             Q26.Resposta02 = "Lima";
@@ -298,6 +392,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q26);
 
             var Q27 = new Questao();
+            Q27.Nivelresposta = 3;
             Q27.Pergunta = "Quem pintou o teto da Capela Sistina?";
             Q27.Resposta01 = "Leonardo da Vinci";
             Q27.Resposta02 = "Vincent van Gogh";
@@ -309,6 +404,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q27);
 
             var Q28 = new Questao();
+            Q28.Nivelresposta = 3;
             Q28.Pergunta = "Qual é o metal cujo símbolo químico é Fe?";
             Q28.Resposta01 = "Ouro";
             Q28.Resposta02 = "Prata";
@@ -320,6 +416,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q28);
 
             var Q29 = new Questao();
+            Q29.Nivelresposta = 3;
             Q29.Pergunta = "Quem foi o primeiro homem a pisar na Lua?";
             Q29.Resposta01 = "Yuri Gagarin";
             Q29.Resposta02 = "Buzz Aldrin";
@@ -331,6 +428,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q29);
 
             var Q30 = new Questao();
+            Q30.Nivelresposta = 3;
             Q30.Pergunta = "Qual é o maior país da América do Sul?";
             Q30.Resposta01 = "Argentina";
             Q30.Resposta02 = "Peru";
@@ -342,6 +440,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q30);
 
             var Q31 = new Questao();
+            Q31.Nivelresposta = 4;
             Q31.Pergunta = "Qual é a língua mais falada no mundo?";
             Q31.Resposta01 = "Espanhol";
             Q31.Resposta02 = "Chinês";
@@ -353,6 +452,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q31);
 
             var Q32 = new Questao();
+            Q32.Nivelresposta = 4;
             Q32.Pergunta = "Quantos continentes existem na Terra?";
             Q32.Resposta01 = "4";
             Q32.Resposta02 = "5";
@@ -364,6 +464,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q32);
 
             var Q33 = new Questao();
+            Q33.Nivelresposta = 4;
             Q33.Pergunta = "Qual é a maior ilha do mundo?";
             Q33.Resposta01 = "Madagascar";
             Q33.Resposta02 = "Groenlândia";
@@ -375,6 +476,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q33);
 
             var Q34 = new Questao();
+            Q34.Nivelresposta = 4;
             Q34.Pergunta = "Qual é o país mais extenso da Europa?";
             Q34.Resposta01 = "França";
             Q34.Resposta02 = "Alemanha";
@@ -386,6 +488,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q34);
 
             var Q35 = new Questao();
+            Q35.Nivelresposta = 4;
             Q35.Pergunta = "Qual é o estado brasileiro conhecido como 'Terra da Garoa'?";
             Q35.Resposta01 = "Rio de Janeiro";
             Q35.Resposta02 = "Minas Gerais";
@@ -397,6 +500,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q35);
 
             var Q36 = new Questao();
+            Q36.Nivelresposta = 4;
             Q36.Pergunta = "Quem foi o primeiro imperador do Brasil?";
             Q36.Resposta01 = "Dom Pedro I";
             Q36.Resposta02 = "Dom Pedro II";
@@ -408,6 +512,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q36);
 
             var Q37 = new Questao();
+            Q37.Nivelresposta = 4;
             Q37.Pergunta = "Quantos estados o Brasil tem?";
             Q37.Resposta01 = "24";
             Q37.Resposta02 = "25";
@@ -419,6 +524,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q37);
 
             var Q38 = new Questao();
+            Q38.Nivelresposta = 4;
             Q38.Pergunta = "Qual é a menor unidade estrutural dos organismos vivos?";
             Q38.Resposta01 = "Molécula";
             Q38.Resposta02 = "Célula";
@@ -430,6 +536,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q38);
 
             var Q39 = new Questao();
+            Q39.Nivelresposta = 4;
             Q39.Pergunta = "Em qual país se localiza o rio Nilo?";
             Q39.Resposta01 = "Índia";
             Q39.Resposta02 = "Egito";
@@ -441,6 +548,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q39);
 
             var Q40 = new Questao();
+            Q40.Nivelresposta = 4;
             Q40.Pergunta = "Qual o número do átomo de carbono na tabela periódica?";
             Q40.Resposta01 = "4";
             Q40.Resposta02 = "6";
@@ -452,6 +560,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q40);
 
             var Q41 = new Questao();
+            Q41.Nivelresposta = 5;
             Q41.Pergunta = "Em que ano o homem chegou à Lua pela primeira vez?";
             Q41.Resposta01 = "1959";
             Q41.Resposta02 = "1965";
@@ -463,6 +572,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q41);
 
             var Q42 = new Questao();
+            Q42.Nivelresposta = 5;
             Q42.Pergunta = "Qual é o nome do processo de divisão celular que resulta em duas células idênticas?";
             Q42.Resposta01 = "Meiose";
             Q42.Resposta02 = "Metabolismo";
@@ -474,6 +584,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q42);
 
             var Q43 = new Questao();
+            Q43.Nivelresposta = 5;
             Q43.Pergunta = "Em que ano ocorreu a Revolução Francesa?";
             Q43.Resposta01 = "1759";
             Q43.Resposta02 = "1776";
@@ -485,6 +596,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q43);
 
             var Q44 = new Questao();
+            Q44.Nivelresposta = 5;
             Q44.Pergunta = "Quem foi o primeiro presidente dos Estados Unidos?";
             Q44.Resposta01 = "Thomas Jefferson";
             Q44.Resposta02 = "Abraham Lincoln";
@@ -496,6 +608,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q44);
 
             var Q45 = new Questao();
+            Q45.Nivelresposta = 5;
             Q45.Pergunta = "Qual é o órgão responsável por bombear o sangue no corpo humano?";
             Q45.Resposta01 = "Pulmões";
             Q45.Resposta02 = "Fígado";
@@ -507,6 +620,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q45);
 
             var Q46 = new Questao();
+            Q46.Nivelresposta = 5;
             Q46.Pergunta = "Qual é o menor planeta do sistema solar?";
             Q46.Resposta01 = "Vênus";
             Q46.Resposta02 = "Marte";
@@ -518,6 +632,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q46);
 
             var Q47 = new Questao();
+            Q47.Nivelresposta = 5;
             Q47.Pergunta = "Em que cidade fica localizado o Coliseu?";
             Q47.Resposta01 = "Paris";
             Q47.Resposta02 = "Londres";
@@ -529,6 +644,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q47);
 
             var Q48 = new Questao();
+            Q48.Nivelresposta = 5;
             Q48.Pergunta = "Quem descobriu o Brasil em 1500?";
             Q48.Resposta01 = "Pedro Álvares Cabral";
             Q48.Resposta02 = "Cristóvão Colombo";
@@ -540,6 +656,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q48);
 
             var Q49 = new Questao();
+            Q49.Nivelresposta = 5;
             Q49.Pergunta = "Qual o símbolo químico do ouro?";
             Q49.Resposta01 = "Ag";
             Q49.Resposta02 = "Au";
@@ -551,6 +668,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q49);
 
             var Q50 = new Questao();
+            Q50.Nivelresposta = 5;
             Q50.Pergunta = "Qual é o maior oceano do mundo?";
             Q50.Resposta01 = "Oceano Atlântico";
             Q50.Resposta02 = "Oceano Índico";
@@ -562,6 +680,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q50);
 
             var Q51 = new Questao();
+            Q51.Nivelresposta = 6;
             Q51.Pergunta = "Qual é o maior planeta do sistema solar?";
             Q51.Resposta01 = "Terra";
             Q51.Resposta02 = "Saturno";
@@ -573,6 +692,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q51);
 
             var Q52 = new Questao();
+            Q52.Nivelresposta = 6;
             Q52.Pergunta = "Em que ano começou a Primeira Guerra Mundial?";
             Q52.Resposta01 = "1912";
             Q52.Resposta02 = "1914";
@@ -584,6 +704,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q52);
 
             var Q53 = new Questao();
+            Q53.Nivelresposta = 6;
             Q53.Pergunta = "Qual é o estado brasileiro conhecido como 'Terra dos Pampas'?";
             Q53.Resposta01 = "Rio de Janeiro";
             Q53.Resposta02 = "Paraná";
@@ -595,6 +716,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q53);
 
             var Q54 = new Questao();
+            Q54.Nivelresposta = 6;
             Q54.Pergunta = "Qual é a estrela mais próxima da Terra?";
             Q54.Resposta01 = "Estrela Polar";
             Q54.Resposta02 = "Sirius";
@@ -606,6 +728,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q54);
 
             var Q55 = new Questao();
+            Q55.Nivelresposta = 6;
             Q55.Pergunta = "Qual é o órgão responsável pela digestão no corpo humano?";
             Q55.Resposta01 = "Coração";
             Q55.Resposta02 = "Pulmões";
@@ -617,6 +740,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q55);
 
             var Q56 = new Questao();
+            Q56.Nivelresposta = 6;
             Q56.Pergunta = "Em que cidade foram realizados os primeiros Jogos Olímpicos modernos?";
             Q56.Resposta01 = "Paris";
             Q56.Resposta02 = "Londres";
@@ -628,6 +752,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q56);
 
             var Q57 = new Questao();
+            Q57.Nivelresposta = 6;
             Q57.Pergunta = "Em que ano caiu o Muro de Berlim?";
             Q57.Resposta01 = "1985";
             Q57.Resposta02 = "1987";
@@ -639,6 +764,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q57);
 
             var Q58 = new Questao();
+            Q58.Nivelresposta = 6;
             Q58.Pergunta = "Qual é o símbolo químico da água?";
             Q58.Resposta01 = "H2O";
             Q58.Resposta02 = "O2";
@@ -650,6 +776,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q58);
 
             var Q59 = new Questao();
+            Q59.Nivelresposta = 6;
             Q59.Pergunta = "Em que continente fica a Austrália?";
             Q59.Resposta01 = "Ásia";
             Q59.Resposta02 = "Europa";
@@ -661,6 +788,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q59);
 
             var Q60 = new Questao();
+            Q60.Nivelresposta = 6;
             Q60.Pergunta = "Qual é o planeta conhecido como o 'Planeta Vermelho'?";
             Q60.Resposta01 = "Vênus";
             Q60.Resposta02 = "Marte";
@@ -672,6 +800,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q60);
 
             var Q61 = new Questao();
+            Q61.Nivelresposta = 7;
             Q61.Pergunta = "Qual o nome do compositor da famosa obra 'A Nona Sinfonia'?";
             Q61.Resposta01 = "Ludwig van Beethoven";
             Q61.Resposta02 = "Johann Sebastian Bach";
@@ -683,6 +812,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q61);
 
             var Q62 = new Questao();
+            Q62.Nivelresposta = 7;
             Q62.Pergunta = "Qual é a moeda oficial do Japão?";
             Q62.Resposta01 = "Iene";
             Q62.Resposta02 = "Dólar";
@@ -694,6 +824,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q62);
 
             var Q63 = new Questao();
+            Q63.Nivelresposta = 7;
             Q63.Pergunta = "Qual é a fórmula química do gás carbônico?";
             Q63.Resposta01 = "CO";
             Q63.Resposta02 = "CO2";
@@ -705,6 +836,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q63);
 
             var Q64 = new Questao();
+            Q64.Nivelresposta = 7;
             Q64.Pergunta = "Em que ano ocorreu o Descobrimento do Brasil?";
             Q64.Resposta01 = "1400";
             Q64.Resposta02 = "1450";
@@ -716,6 +848,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q64);
 
             var Q66 = new Questao();
+            Q66.Nivelresposta = 7;
             Q66.Pergunta = "Quem pintou a obra 'Mona Lisa'?";
             Q66.Resposta01 = "Vincent van Gogh";
             Q66.Resposta02 = "Pablo Picasso";
@@ -727,6 +860,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q66);
 
             var Q67 = new Questao();
+            Q67.Nivelresposta = 7;
             Q67.Pergunta = "Em que ano foi declarada a independência dos Estados Unidos?";
             Q67.Resposta01 = "1776";
             Q67.Resposta02 = "1789";
@@ -738,6 +872,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q67);
 
             var Q68 = new Questao();
+            Q68.Nivelresposta = 7;
             Q68.Pergunta = "Qual é o elemento mais abundante no universo?";
             Q68.Resposta01 = "Oxigênio";
             Q68.Resposta02 = "Hidrogênio";
@@ -749,6 +884,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q68);
 
             var Q69 = new Questao();
+            Q69.Nivelresposta = 7;
             Q69.Pergunta = "Quem escreveu 'Dom Quixote'?";
             Q69.Resposta01 = "Miguel de Cervantes";
             Q69.Resposta02 = "Gabriel García Márquez";
@@ -760,6 +896,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q69);
 
             var Q70 = new Questao();
+            Q70.Nivelresposta = 7;
             Q70.Pergunta = "Qual é o maior deserto do mundo?";
             Q70.Resposta01 = "Deserto de Gobi";
             Q70.Resposta02 = "Deserto do Saara";
@@ -771,6 +908,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q70);
 
             var Q71 = new Questao();
+            Q71.Nivelresposta = 8;
             Q71.Pergunta = "Qual é o idioma mais falado no mundo?";
             Q71.Resposta01 = "Inglês";
             Q71.Resposta02 = "Chinês mandarim";
@@ -782,6 +920,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q71);
 
             var Q72 = new Questao();
+            Q72.Nivelresposta = 8;
             Q72.Pergunta = "Qual é o maior oceano da Terra?";
             Q72.Resposta01 = "Oceano Atlântico";
             Q72.Resposta02 = "Oceano Índico";
@@ -793,6 +932,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q72);
 
             var Q73 = new Questao();
+            Q73.Nivelresposta = 8;
             Q73.Pergunta = "Qual é a principal fonte de energia do Sol?";
             Q73.Resposta01 = "Fissão nuclear";
             Q73.Resposta02 = "Combustão química";
@@ -804,6 +944,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q73);
 
             var Q74 = new Questao();
+            Q74.Nivelresposta = 8;
             Q74.Pergunta = "Quem escreveu 'O Senhor dos Anéis'?";
             Q74.Resposta01 = "J.R.R. Tolkien";
             Q74.Resposta02 = "J.K. Rowling";
@@ -815,6 +956,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q74);
 
             var Q75 = new Questao();
+            Q75.Nivelresposta = 8;
             Q75.Pergunta = "Qual é o maior animal do planeta?";
             Q75.Resposta01 = "Elefante";
             Q75.Resposta02 = "Tubarão-baleia";
@@ -826,6 +968,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q75);
 
             var Q76 = new Questao();
+            Q76.Nivelresposta = 8;
             Q76.Pergunta = "Qual é o país mais populoso do mundo?";
             Q76.Resposta01 = "Índia";
             Q76.Resposta02 = "China";
@@ -837,6 +980,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q76);
 
             var Q77 = new Questao();
+            Q77.Nivelresposta = 8;
             Q77.Pergunta = "Qual é a língua oficial do Brasil?";
             Q77.Resposta01 = "Espanhol";
             Q77.Resposta02 = "Português";
@@ -848,6 +992,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q77);
 
             var Q78 = new Questao();
+            Q78.Nivelresposta = 8;
             Q78.Pergunta = "Quem é conhecido como o 'Pai da Psicanálise'?";
             Q78.Resposta01 = "Sigmund Freud";
             Q78.Resposta02 = "Carl Jung";
@@ -859,6 +1004,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q78);
 
             var Q79 = new Questao();
+            Q79.Nivelresposta = 8;
             Q79.Pergunta = "Qual é a fórmula química do metano?";
             Q79.Resposta01 = "CH4";
             Q79.Resposta02 = "C2H6";
@@ -870,6 +1016,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q79);
 
             var Q80 = new Questao();
+            Q80.Nivelresposta = 8;
             Q80.Pergunta = "Qual é a capital da França?";
             Q80.Resposta01 = "Paris";
             Q80.Resposta02 = "Londres";
@@ -881,6 +1028,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q80);
 
             var Q81 = new Questao();
+            Q81.Nivelresposta = 9;
             Q81.Pergunta = "Qual é o maior deserto quente do mundo?";
             Q81.Resposta01 = "Deserto do Saara";
             Q81.Resposta02 = "Deserto da Arábia";
@@ -892,6 +1040,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q81);
 
             var Q82 = new Questao();
+            Q82.Nivelresposta = 9;
             Q82.Pergunta = "Quem inventou o telefone?";
             Q82.Resposta01 = "Alexander Graham Bell";
             Q82.Resposta02 = "Thomas Edison";
@@ -903,6 +1052,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q82);
 
             var Q83 = new Questao();
+            Q82.Nivelresposta = 9;
             Q83.Pergunta = "Qual é a segunda maior cidade dos Estados Unidos em termos de população?";
             Q83.Resposta01 = "New York";
             Q83.Resposta02 = "Los Angeles";
@@ -914,6 +1064,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q83);
 
             var Q84 = new Questao();
+            Q84.Nivelresposta = 9;
             Q84.Pergunta = "Qual é o metal mais leve conhecido?";
             Q84.Resposta01 = "Lítio";
             Q84.Resposta02 = "Boro";
@@ -925,6 +1076,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q84);
 
             var Q85 = new Questao();
+            Q85.Nivelresposta = 9;
             Q85.Pergunta = "Qual é o continente mais seco do mundo?";
             Q85.Resposta01 = "África";
             Q85.Resposta02 = "Antártica";
@@ -936,6 +1088,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q85);
 
             var Q86 = new Questao();
+            Q86.Nivelresposta = 9;
             Q86.Pergunta = "Qual é a principal função do sistema circulatório?";
             Q86.Resposta01 = "Respiração";
             Q86.Resposta02 = "Digestão";
@@ -947,6 +1100,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q86);
 
             var Q87 = new Questao();
+            Q87.Nivelresposta = 9;
             Q87.Pergunta = "Quem é o autor da teoria da relatividade?";
             Q87.Resposta01 = "Isaac Newton";
             Q87.Resposta02 = "Albert Einstein";
@@ -958,6 +1112,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q87);
 
             var Q88 = new Questao();
+            Q88.Nivelresposta = 9;
             Q88.Pergunta = "Qual é a capital da Itália?";
             Q88.Resposta01 = "Roma";
             Q88.Resposta02 = "Milão";
@@ -969,6 +1124,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q88);
 
             var Q89 = new Questao();
+            Q89.Nivelresposta = 9;
             Q89.Pergunta = "Qual é o maior lago da África?";
             Q89.Resposta01 = "Lago Vitória";
             Q89.Resposta02 = "Lago Tanganica";
@@ -980,6 +1136,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q89);
 
             var Q90 = new Questao();
+            Q90.Nivelresposta = 9;
             Q90.Pergunta = "Qual é o principal gás responsável pelo efeito estufa?";
             Q90.Resposta01 = "Oxigênio";
             Q90.Resposta02 = "Hidrogênio";
@@ -991,6 +1148,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q90);
 
             var Q91 = new Questao();
+            Q91.Nivelresposta = 10;
             Q91.Pergunta = "Qual é o maior sistema montanhoso do mundo?";
             Q91.Resposta01 = "Montanhas Rochosas";
             Q91.Resposta02 = "Andes";
@@ -1002,6 +1160,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q91);
 
             var Q92 = new Questao();
+            Q92.Nivelresposta = 10;
             Q92.Pergunta = "Quem escreveu '1984'?";
             Q92.Resposta01 = "George Orwell";
             Q92.Resposta02 = "Aldous Huxley";
@@ -1013,6 +1172,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q92);
 
             var Q93 = new Questao();
+            Q93.Nivelresposta = 10;
             Q93.Pergunta = "Qual é a fórmula química da água?";
             Q93.Resposta01 = "H2O";
             Q93.Resposta02 = "CO2";
@@ -1024,6 +1184,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q93);
 
             var Q94 = new Questao();
+            Q94.Nivelresposta = 10;
             Q94.Pergunta = "Qual é o primeiro mês do ano no calendário gregoriano?";
             Q94.Resposta01 = "Janeiro";
             Q94.Resposta02 = "Fevereiro";
@@ -1035,6 +1196,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q94);
 
             var Q95 = new Questao();
+            Q95.Nivelresposta = 10;
             Q95.Pergunta = "Qual é o país que mais produz café no mundo?";
             Q95.Resposta01 = "Brasil";
             Q95.Resposta02 = "Colômbia";
@@ -1046,6 +1208,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q95);
 
             var Q96 = new Questao();
+            Q96.Nivelresposta = 10;
             Q96.Pergunta = "Qual é a unidade de medida da temperatura no sistema internacional?";
             Q96.Resposta01 = "Fahrenheit";
             Q96.Resposta02 = "Kelvin";
@@ -1057,6 +1220,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q96);
 
             var Q97 = new Questao();
+            Q97.Nivelresposta = 10;
             Q97.Pergunta = "Qual é o nome do sistema solar em que a Terra está localizada?";
             Q97.Resposta01 = "Sistema Alpha";
             Q97.Resposta02 = "Sistema Andromeda";
@@ -1068,6 +1232,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q97);
 
             var Q98 = new Questao();
+            Q98.Nivelresposta = 10;
             Q98.Pergunta = "Qual é o principal ingrediente do guacamole?";
             Q98.Resposta01 = "Tomate";
             Q98.Resposta02 = "Cebola";
@@ -1079,6 +1244,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q98);
 
             var Q99 = new Questao();
+            Q99.Nivelresposta = 10;
             Q99.Pergunta = "Qual é o nome do dispositivo usado para medir a pressão arterial?";
             Q99.Resposta01 = "Termômetro";
             Q99.Resposta02 = "Esfigmomanômetro";
@@ -1090,6 +1256,7 @@ namespace Showdomiliao
             ListaQuestoes.Add(Q99);
 
             var Q100 = new Questao();
+            Q100.Nivelresposta = 10;
             Q100.Pergunta = "Qual é o animal conhecido por ter o pescoço mais longo?";
             Q100.Resposta01 = "Girafa";
             Q100.Resposta02 = "Elefante";
@@ -1100,25 +1267,12 @@ namespace Showdomiliao
             Q100.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
             ListaQuestoes.Add(Q100);
 
+            ProximaQuestao();
 
         }
-        public void ProximaQuestao()
-        {
-            var numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count);
-            while (ListaQuestoesRespondidas.Contains(numRandomico))
-                numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count);
 
-            ListaQuestoesRespondidas.Add(numRandomico);
-            QuestaoAtual = ListaQuestoes[numRandomico];
-            QuestaoAtual.Desenhar();
-        }
-        public async void VerfiicaCorreto(int RespostaSelecionada)
-        {
-            if (QuestaoAtual.VerificaResposta(RespostaSelecionada))
-            {
-                await Task.Delay(1000);
-                ProximaQuestao();
-            }
-        }
+
     }
 }
+
+
