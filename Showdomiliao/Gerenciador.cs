@@ -2,8 +2,8 @@ namespace Showdomiliao
 {
     public class Gerenciador
     {
-        List<Questao> ListaQuestoes = new List<Questao>();
-        List<int> ListaQuestoesRespondidas = new List<int>();
+        List<Questao> ListaTodasQuestoes = new List<Questao>();
+        List<Questao> ListaTodasQuestoesRespondidas = new List<Questao>();
         public int Pontuacao { get; private set; }
         Label labelPontuacao;
         Label labelNivel;
@@ -34,12 +34,19 @@ namespace Showdomiliao
         }
         public void ProximaQuestao()
         {
-            var numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count -1);
-            while (ListaQuestoesRespondidas.Contains(numRandomico))
-                numRandomico = Random.Shared.Next(0, ListaQuestoesRespondidas.Count -1);
+            var ListaQuestoes = ListaTodasQuestoes.Where(d => d.Nivelresposta == NivelAtual).ToList();
+            var numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
 
-            ListaQuestoesRespondidas.Add(numRandomico);
             QuestaoAtual = ListaQuestoes[numRandomico];
+
+            while (ListaTodasQuestoesRespondidas.Contains(QuestaoAtual))
+            {
+                numRandomico = Random.Shared.Next(0, ListaQuestoes.Count - 1);
+                QuestaoAtual = ListaQuestoes[numRandomico];
+            }
+
+            ListaTodasQuestoesRespondidas.Add(QuestaoAtual);
+
             QuestaoAtual.Desenhar();
         }
 
@@ -53,22 +60,30 @@ namespace Showdomiliao
                 ProximaQuestao();
                 labelPontuacao.Text = "Pontuação:R$" + Pontuacao.ToString();
                 labelNivel.Text = "Nível:" + NivelAtual.ToString();
+
+                if (NivelAtual == 10)
+                {
+
+                    Application.Current.MainPage = new Telainicial();
+                }
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Game Over", "Você perdeu!", "Ok");
+                await App.Current.MainPage.DisplayAlert("Você errou!", "Tente novamente", "Ok");
                 Inicializar();
             }
 
         }
 
-        int NivelAtual = 0;
+        int NivelAtual = 1;
 
         void Inicializar()
         {
             Pontuacao = 0;
-            NivelAtual = 0;
+            NivelAtual = 1;
+            ListaTodasQuestoesRespondidas.Clear();
             ProximaQuestao();
+
         }
         public Gerenciador(Label labelpergunta, Button button1, Button button2, Button button3, Button button4, Button button5, Label labelPoint, Label labelNivel)
         {
@@ -89,7 +104,7 @@ namespace Showdomiliao
             Q1.Resposta05 = "Saturno";
             Q1.RespostaCorreta = 4;
             Q1.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q1);
+            ListaTodasQuestoes.Add(Q1);
 
             var Q2 = new Questao();
             Q2.Nivelresposta = 1;
@@ -101,7 +116,7 @@ namespace Showdomiliao
             Q2.Resposta05 = "Machado de Assis";
             Q2.RespostaCorreta = 2;
             Q2.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q2);
+            ListaTodasQuestoes.Add(Q2);
 
             var Q3 = new Questao();
             Q3.Nivelresposta = 1;
@@ -113,7 +128,7 @@ namespace Showdomiliao
             Q3.Resposta05 = "Brisbane";
             Q3.RespostaCorreta = 3;
             Q3.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q3);
+            ListaTodasQuestoes.Add(Q3);
 
             var Q4 = new Questao();
             Q4.Nivelresposta = 1;
@@ -125,7 +140,7 @@ namespace Showdomiliao
             Q4.Resposta05 = "Epitácio Pessoa";
             Q4.RespostaCorreta = 3;
             Q4.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q4);
+            ListaTodasQuestoes.Add(Q4);
 
             var Q5 = new Questao();
             Q5.Nivelresposta = 1;
@@ -137,7 +152,7 @@ namespace Showdomiliao
             Q5.Resposta05 = "CH4";
             Q5.RespostaCorreta = 3;
             Q5.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q5);
+            ListaTodasQuestoes.Add(Q5);
 
             var Q6 = new Questao();
             Q6.Nivelresposta = 1;
@@ -149,7 +164,7 @@ namespace Showdomiliao
             Q6.Resposta05 = "Salvador Dalí";
             Q6.RespostaCorreta = 2;
             Q6.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q6);
+            ListaTodasQuestoes.Add(Q6);
 
             var Q7 = new Questao();
             Q7.Nivelresposta = 1;
@@ -161,7 +176,7 @@ namespace Showdomiliao
             Q7.Resposta05 = "Rússia";
             Q7.RespostaCorreta = 5;
             Q7.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q7);
+            ListaTodasQuestoes.Add(Q7);
 
             var Q8 = new Questao();
             Q8.Nivelresposta = 1;
@@ -173,7 +188,7 @@ namespace Showdomiliao
             Q8.Resposta05 = "Won";
             Q8.RespostaCorreta = 4;
             Q8.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q8);
+            ListaTodasQuestoes.Add(Q8);
 
             var Q9 = new Questao();
             Q9.Nivelresposta = 1;
@@ -185,7 +200,7 @@ namespace Showdomiliao
             Q9.Resposta05 = "Galileo Galilei";
             Q9.RespostaCorreta = 3;
             Q9.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q9);
+            ListaTodasQuestoes.Add(Q9);
 
             var Q10 = new Questao();
             Q10.Nivelresposta = 1;
@@ -197,7 +212,7 @@ namespace Showdomiliao
             Q10.Resposta05 = "Ionosfera";
             Q10.RespostaCorreta = 1;
             Q10.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q10);
+            ListaTodasQuestoes.Add(Q10);
 
             var Q11 = new Questao();
             Q11.Nivelresposta = 2;
@@ -209,7 +224,7 @@ namespace Showdomiliao
             Q11.Resposta05 = "Oceano Antártico";
             Q11.RespostaCorreta = 4;
             Q11.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q11);
+            ListaTodasQuestoes.Add(Q11);
 
             var Q12 = new Questao();
             Q12.Nivelresposta = 2;
@@ -221,7 +236,7 @@ namespace Showdomiliao
             Q12.Resposta05 = "Portugal";
             Q12.RespostaCorreta = 4;
             Q12.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q12);
+            ListaTodasQuestoes.Add(Q12);
 
             var Q13 = new Questao();
             Q13.Nivelresposta = 2;
@@ -233,7 +248,7 @@ namespace Showdomiliao
             Q13.Resposta05 = "Crocodilo";
             Q13.RespostaCorreta = 2;
             Q13.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q13);
+            ListaTodasQuestoes.Add(Q13);
 
             var Q14 = new Questao();
             Q14.Nivelresposta = 2;
@@ -245,7 +260,7 @@ namespace Showdomiliao
             Q14.Resposta05 = "Amerigo Vespucci";
             Q14.RespostaCorreta = 2;
             Q14.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q14);
+            ListaTodasQuestoes.Add(Q14);
 
             var Q15 = new Questao();
             Q15.Nivelresposta = 2;
@@ -257,7 +272,7 @@ namespace Showdomiliao
             Q15.Resposta05 = "Acre";
             Q15.RespostaCorreta = 4;
             Q15.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q15);
+            ListaTodasQuestoes.Add(Q15);
 
             var Q16 = new Questao();
             Q16.Nivelresposta = 2;
@@ -269,7 +284,7 @@ namespace Showdomiliao
             Q16.Resposta05 = "1922";
             Q16.RespostaCorreta = 3;
             Q16.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q16);
+            ListaTodasQuestoes.Add(Q16);
 
             var Q17 = new Questao();
             Q17.Nivelresposta = 2;
@@ -281,7 +296,7 @@ namespace Showdomiliao
             Q17.Resposta05 = "Cloro";
             Q17.RespostaCorreta = 4;
             Q17.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q17);
+            ListaTodasQuestoes.Add(Q17);
 
             var Q18 = new Questao();
             Q18.Nivelresposta = 2;
@@ -293,7 +308,7 @@ namespace Showdomiliao
             Q18.Resposta05 = "Antártida";
             Q18.RespostaCorreta = 5;
             Q18.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q18);
+            ListaTodasQuestoes.Add(Q18);
 
             var Q19 = new Questao();
             Q19.Nivelresposta = 2;
@@ -305,7 +320,7 @@ namespace Showdomiliao
             Q19.Resposta05 = "Leonardo da Vinci";
             Q19.RespostaCorreta = 1;
             Q19.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q19);
+            ListaTodasQuestoes.Add(Q19);
 
             var Q20 = new Questao();
             Q20.Nivelresposta = 2;
@@ -317,7 +332,7 @@ namespace Showdomiliao
             Q20.Resposta05 = "Floresta de Borneo";
             Q20.RespostaCorreta = 1;
             Q20.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q20);
+            ListaTodasQuestoes.Add(Q20);
 
             var Q21 = new Questao();
             Q21.Nivelresposta = 3;
@@ -329,7 +344,7 @@ namespace Showdomiliao
             Q21.Resposta05 = "Lisboa";
             Q21.RespostaCorreta = 2;
             Q21.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q21);
+            ListaTodasQuestoes.Add(Q21);
 
             var Q22 = new Questao();
             Q22.Nivelresposta = 3;
@@ -341,7 +356,7 @@ namespace Showdomiliao
             Q22.Resposta05 = "Marie Curie";
             Q22.RespostaCorreta = 3;
             Q22.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q22);
+            ListaTodasQuestoes.Add(Q22);
 
             var Q23 = new Questao();
             Q23.Nivelresposta = 3;
@@ -353,7 +368,7 @@ namespace Showdomiliao
             Q23.Resposta05 = "Lhotse";
             Q23.RespostaCorreta = 2;
             Q23.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q23);
+            ListaTodasQuestoes.Add(Q23);
 
             var Q24 = new Questao();
             Q24.Nivelresposta = 3;
@@ -365,7 +380,7 @@ namespace Showdomiliao
             Q24.Resposta05 = "Indonésia";
             Q24.RespostaCorreta = 4;
             Q24.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q24);
+            ListaTodasQuestoes.Add(Q24);
 
             var Q25 = new Questao();
             Q25.Nivelresposta = 3;
@@ -377,7 +392,7 @@ namespace Showdomiliao
             Q25.Resposta05 = "Leão";
             Q25.RespostaCorreta = 1;
             Q25.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q25);
+            ListaTodasQuestoes.Add(Q25);
 
             var Q26 = new Questao();
             Q26.Nivelresposta = 3;
@@ -389,7 +404,7 @@ namespace Showdomiliao
             Q26.Resposta05 = "Bogotá";
             Q26.RespostaCorreta = 3;
             Q26.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q26);
+            ListaTodasQuestoes.Add(Q26);
 
             var Q27 = new Questao();
             Q27.Nivelresposta = 3;
@@ -401,7 +416,7 @@ namespace Showdomiliao
             Q27.Resposta05 = "Pablo Picasso";
             Q27.RespostaCorreta = 3;
             Q27.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q27);
+            ListaTodasQuestoes.Add(Q27);
 
             var Q28 = new Questao();
             Q28.Nivelresposta = 3;
@@ -413,7 +428,7 @@ namespace Showdomiliao
             Q28.Resposta05 = "Mercúrio";
             Q28.RespostaCorreta = 3;
             Q28.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q28);
+            ListaTodasQuestoes.Add(Q28);
 
             var Q29 = new Questao();
             Q29.Nivelresposta = 3;
@@ -425,7 +440,7 @@ namespace Showdomiliao
             Q29.Resposta05 = "Alan Shepard";
             Q29.RespostaCorreta = 3;
             Q29.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q29);
+            ListaTodasQuestoes.Add(Q29);
 
             var Q30 = new Questao();
             Q30.Nivelresposta = 3;
@@ -437,7 +452,7 @@ namespace Showdomiliao
             Q30.Resposta05 = "Chile";
             Q30.RespostaCorreta = 4;
             Q30.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q30);
+            ListaTodasQuestoes.Add(Q30);
 
             var Q31 = new Questao();
             Q31.Nivelresposta = 4;
@@ -449,7 +464,7 @@ namespace Showdomiliao
             Q31.Resposta05 = "Árabe";
             Q31.RespostaCorreta = 2;
             Q31.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q31);
+            ListaTodasQuestoes.Add(Q31);
 
             var Q32 = new Questao();
             Q32.Nivelresposta = 4;
@@ -461,7 +476,7 @@ namespace Showdomiliao
             Q32.Resposta05 = "8";
             Q32.RespostaCorreta = 4;
             Q32.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q32);
+            ListaTodasQuestoes.Add(Q32);
 
             var Q33 = new Questao();
             Q33.Nivelresposta = 4;
@@ -473,7 +488,7 @@ namespace Showdomiliao
             Q33.Resposta05 = "Nova Zelândia";
             Q33.RespostaCorreta = 2;
             Q33.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q33);
+            ListaTodasQuestoes.Add(Q33);
 
             var Q34 = new Questao();
             Q34.Nivelresposta = 4;
@@ -485,7 +500,7 @@ namespace Showdomiliao
             Q34.Resposta05 = "Itália";
             Q34.RespostaCorreta = 4;
             Q34.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q34);
+            ListaTodasQuestoes.Add(Q34);
 
             var Q35 = new Questao();
             Q35.Nivelresposta = 4;
@@ -497,7 +512,7 @@ namespace Showdomiliao
             Q35.Resposta05 = "Paraná";
             Q35.RespostaCorreta = 4;
             Q35.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q35);
+            ListaTodasQuestoes.Add(Q35);
 
             var Q36 = new Questao();
             Q36.Nivelresposta = 4;
@@ -509,7 +524,7 @@ namespace Showdomiliao
             Q36.Resposta05 = "Floriano Peixoto";
             Q36.RespostaCorreta = 1;
             Q36.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q36);
+            ListaTodasQuestoes.Add(Q36);
 
             var Q37 = new Questao();
             Q37.Nivelresposta = 4;
@@ -521,7 +536,7 @@ namespace Showdomiliao
             Q37.Resposta05 = "28";
             Q37.RespostaCorreta = 3;
             Q37.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q37);
+            ListaTodasQuestoes.Add(Q37);
 
             var Q38 = new Questao();
             Q38.Nivelresposta = 4;
@@ -533,7 +548,7 @@ namespace Showdomiliao
             Q38.Resposta05 = "Organelo";
             Q38.RespostaCorreta = 2;
             Q38.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q38);
+            ListaTodasQuestoes.Add(Q38);
 
             var Q39 = new Questao();
             Q39.Nivelresposta = 4;
@@ -545,7 +560,7 @@ namespace Showdomiliao
             Q39.Resposta05 = "Brasil";
             Q39.RespostaCorreta = 2;
             Q39.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q39);
+            ListaTodasQuestoes.Add(Q39);
 
             var Q40 = new Questao();
             Q40.Nivelresposta = 4;
@@ -557,7 +572,7 @@ namespace Showdomiliao
             Q40.Resposta05 = "12";
             Q40.RespostaCorreta = 2;
             Q40.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q40);
+            ListaTodasQuestoes.Add(Q40);
 
             var Q41 = new Questao();
             Q41.Nivelresposta = 5;
@@ -569,7 +584,7 @@ namespace Showdomiliao
             Q41.Resposta05 = "1975";
             Q41.RespostaCorreta = 3;
             Q41.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q41);
+            ListaTodasQuestoes.Add(Q41);
 
             var Q42 = new Questao();
             Q42.Nivelresposta = 5;
@@ -581,7 +596,7 @@ namespace Showdomiliao
             Q42.Resposta05 = "Fusão nuclear";
             Q42.RespostaCorreta = 3;
             Q42.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q42);
+            ListaTodasQuestoes.Add(Q42);
 
             var Q43 = new Questao();
             Q43.Nivelresposta = 5;
@@ -593,7 +608,7 @@ namespace Showdomiliao
             Q43.Resposta05 = "1848";
             Q43.RespostaCorreta = 3;
             Q43.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q43);
+            ListaTodasQuestoes.Add(Q43);
 
             var Q44 = new Questao();
             Q44.Nivelresposta = 5;
@@ -605,7 +620,7 @@ namespace Showdomiliao
             Q44.Resposta05 = "Franklin D. Roosevelt";
             Q44.RespostaCorreta = 3;
             Q44.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q44);
+            ListaTodasQuestoes.Add(Q44);
 
             var Q45 = new Questao();
             Q45.Nivelresposta = 5;
@@ -617,7 +632,7 @@ namespace Showdomiliao
             Q45.Resposta05 = "Rins";
             Q45.RespostaCorreta = 3;
             Q45.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q45);
+            ListaTodasQuestoes.Add(Q45);
 
             var Q46 = new Questao();
             Q46.Nivelresposta = 5;
@@ -629,7 +644,7 @@ namespace Showdomiliao
             Q46.Resposta05 = "Plutão";
             Q46.RespostaCorreta = 3;
             Q46.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q46);
+            ListaTodasQuestoes.Add(Q46);
 
             var Q47 = new Questao();
             Q47.Nivelresposta = 5;
@@ -641,7 +656,7 @@ namespace Showdomiliao
             Q47.Resposta05 = "Istambul";
             Q47.RespostaCorreta = 4;
             Q47.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q47);
+            ListaTodasQuestoes.Add(Q47);
 
             var Q48 = new Questao();
             Q48.Nivelresposta = 5;
@@ -653,7 +668,7 @@ namespace Showdomiliao
             Q48.Resposta05 = "Bartolomeu Dias";
             Q48.RespostaCorreta = 1;
             Q48.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q48);
+            ListaTodasQuestoes.Add(Q48);
 
             var Q49 = new Questao();
             Q49.Nivelresposta = 5;
@@ -665,7 +680,7 @@ namespace Showdomiliao
             Q49.Resposta05 = "Pb";
             Q49.RespostaCorreta = 2;
             Q49.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q49);
+            ListaTodasQuestoes.Add(Q49);
 
             var Q50 = new Questao();
             Q50.Nivelresposta = 5;
@@ -677,7 +692,7 @@ namespace Showdomiliao
             Q50.Resposta05 = "Oceano Antártico";
             Q50.RespostaCorreta = 3;
             Q50.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q50);
+            ListaTodasQuestoes.Add(Q50);
 
             var Q51 = new Questao();
             Q51.Nivelresposta = 6;
@@ -689,7 +704,7 @@ namespace Showdomiliao
             Q51.Resposta05 = "Netuno";
             Q51.RespostaCorreta = 4;
             Q51.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q51);
+            ListaTodasQuestoes.Add(Q51);
 
             var Q52 = new Questao();
             Q52.Nivelresposta = 6;
@@ -701,7 +716,7 @@ namespace Showdomiliao
             Q52.Resposta05 = "1920";
             Q52.RespostaCorreta = 2;
             Q52.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q52);
+            ListaTodasQuestoes.Add(Q52);
 
             var Q53 = new Questao();
             Q53.Nivelresposta = 6;
@@ -713,7 +728,7 @@ namespace Showdomiliao
             Q53.Resposta05 = "Mato Grosso do Sul";
             Q53.RespostaCorreta = 4;
             Q53.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q53);
+            ListaTodasQuestoes.Add(Q53);
 
             var Q54 = new Questao();
             Q54.Nivelresposta = 6;
@@ -725,7 +740,7 @@ namespace Showdomiliao
             Q54.Resposta05 = "Proxima Centauri";
             Q54.RespostaCorreta = 3;
             Q54.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q54);
+            ListaTodasQuestoes.Add(Q54);
 
             var Q55 = new Questao();
             Q55.Nivelresposta = 6;
@@ -737,7 +752,7 @@ namespace Showdomiliao
             Q55.Resposta05 = "Rins";
             Q55.RespostaCorreta = 3;
             Q55.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q55);
+            ListaTodasQuestoes.Add(Q55);
 
             var Q56 = new Questao();
             Q56.Nivelresposta = 6;
@@ -749,7 +764,7 @@ namespace Showdomiliao
             Q56.Resposta05 = "Berlim";
             Q56.RespostaCorreta = 3;
             Q56.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q56);
+            ListaTodasQuestoes.Add(Q56);
 
             var Q57 = new Questao();
             Q57.Nivelresposta = 6;
@@ -761,7 +776,7 @@ namespace Showdomiliao
             Q57.Resposta05 = "1993";
             Q57.RespostaCorreta = 3;
             Q57.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q57);
+            ListaTodasQuestoes.Add(Q57);
 
             var Q58 = new Questao();
             Q58.Nivelresposta = 6;
@@ -773,7 +788,7 @@ namespace Showdomiliao
             Q58.Resposta05 = "CH4";
             Q58.RespostaCorreta = 1;
             Q58.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q58);
+            ListaTodasQuestoes.Add(Q58);
 
             var Q59 = new Questao();
             Q59.Nivelresposta = 6;
@@ -785,7 +800,7 @@ namespace Showdomiliao
             Q59.Resposta05 = "África";
             Q59.RespostaCorreta = 4;
             Q59.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q59);
+            ListaTodasQuestoes.Add(Q59);
 
             var Q60 = new Questao();
             Q60.Nivelresposta = 6;
@@ -797,7 +812,7 @@ namespace Showdomiliao
             Q60.Resposta05 = "Mercúrio";
             Q60.RespostaCorreta = 2;
             Q60.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q60);
+            ListaTodasQuestoes.Add(Q60);
 
             var Q61 = new Questao();
             Q61.Nivelresposta = 7;
@@ -809,7 +824,7 @@ namespace Showdomiliao
             Q61.Resposta05 = "Antonio Vivaldi";
             Q61.RespostaCorreta = 1;
             Q61.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q61);
+            ListaTodasQuestoes.Add(Q61);
 
             var Q62 = new Questao();
             Q62.Nivelresposta = 7;
@@ -821,7 +836,7 @@ namespace Showdomiliao
             Q62.Resposta05 = "Yuan";
             Q62.RespostaCorreta = 1;
             Q62.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q62);
+            ListaTodasQuestoes.Add(Q62);
 
             var Q63 = new Questao();
             Q63.Nivelresposta = 7;
@@ -833,7 +848,7 @@ namespace Showdomiliao
             Q63.Resposta05 = "CH4";
             Q63.RespostaCorreta = 2;
             Q63.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q63);
+            ListaTodasQuestoes.Add(Q63);
 
             var Q64 = new Questao();
             Q64.Nivelresposta = 7;
@@ -845,7 +860,7 @@ namespace Showdomiliao
             Q64.Resposta05 = "1600";
             Q64.RespostaCorreta = 3;
             Q64.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q64);
+            ListaTodasQuestoes.Add(Q64);
 
             var Q66 = new Questao();
             Q66.Nivelresposta = 7;
@@ -857,7 +872,7 @@ namespace Showdomiliao
             Q66.Resposta05 = "Salvador Dalí";
             Q66.RespostaCorreta = 3;
             Q66.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q66);
+            ListaTodasQuestoes.Add(Q66);
 
             var Q67 = new Questao();
             Q67.Nivelresposta = 7;
@@ -869,7 +884,7 @@ namespace Showdomiliao
             Q67.Resposta05 = "1865";
             Q67.RespostaCorreta = 1;
             Q67.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q67);
+            ListaTodasQuestoes.Add(Q67);
 
             var Q68 = new Questao();
             Q68.Nivelresposta = 7;
@@ -881,7 +896,7 @@ namespace Showdomiliao
             Q68.Resposta05 = "Hélio";
             Q68.RespostaCorreta = 2;
             Q68.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q68);
+            ListaTodasQuestoes.Add(Q68);
 
             var Q69 = new Questao();
             Q69.Nivelresposta = 7;
@@ -893,7 +908,7 @@ namespace Showdomiliao
             Q69.Resposta05 = "Mario Vargas Llosa";
             Q69.RespostaCorreta = 1;
             Q69.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q69);
+            ListaTodasQuestoes.Add(Q69);
 
             var Q70 = new Questao();
             Q70.Nivelresposta = 7;
@@ -905,7 +920,7 @@ namespace Showdomiliao
             Q70.Resposta05 = "Deserto de Kalahari";
             Q70.RespostaCorreta = 2;
             Q70.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q70);
+            ListaTodasQuestoes.Add(Q70);
 
             var Q71 = new Questao();
             Q71.Nivelresposta = 8;
@@ -917,7 +932,7 @@ namespace Showdomiliao
             Q71.Resposta05 = "Árabe";
             Q71.RespostaCorreta = 2;
             Q71.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q71);
+            ListaTodasQuestoes.Add(Q71);
 
             var Q72 = new Questao();
             Q72.Nivelresposta = 8;
@@ -929,7 +944,7 @@ namespace Showdomiliao
             Q72.Resposta05 = "Oceano Antártico";
             Q72.RespostaCorreta = 3;
             Q72.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q72);
+            ListaTodasQuestoes.Add(Q72);
 
             var Q73 = new Questao();
             Q73.Nivelresposta = 8;
@@ -941,7 +956,7 @@ namespace Showdomiliao
             Q73.Resposta05 = "Oxidação";
             Q73.RespostaCorreta = 3;
             Q73.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q73);
+            ListaTodasQuestoes.Add(Q73);
 
             var Q74 = new Questao();
             Q74.Nivelresposta = 8;
@@ -953,7 +968,7 @@ namespace Showdomiliao
             Q74.Resposta05 = "H.P. Lovecraft";
             Q74.RespostaCorreta = 1;
             Q74.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q74);
+            ListaTodasQuestoes.Add(Q74);
 
             var Q75 = new Questao();
             Q75.Nivelresposta = 8;
@@ -965,7 +980,7 @@ namespace Showdomiliao
             Q75.Resposta05 = "Girafa";
             Q75.RespostaCorreta = 3;
             Q75.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q75);
+            ListaTodasQuestoes.Add(Q75);
 
             var Q76 = new Questao();
             Q76.Nivelresposta = 8;
@@ -977,7 +992,7 @@ namespace Showdomiliao
             Q76.Resposta05 = "Paquistão";
             Q76.RespostaCorreta = 2;
             Q76.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q76);
+            ListaTodasQuestoes.Add(Q76);
 
             var Q77 = new Questao();
             Q77.Nivelresposta = 8;
@@ -989,7 +1004,7 @@ namespace Showdomiliao
             Q77.Resposta05 = "Italiano";
             Q77.RespostaCorreta = 2;
             Q77.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q77);
+            ListaTodasQuestoes.Add(Q77);
 
             var Q78 = new Questao();
             Q78.Nivelresposta = 8;
@@ -1001,7 +1016,7 @@ namespace Showdomiliao
             Q78.Resposta05 = "Erik Erikson";
             Q78.RespostaCorreta = 1;
             Q78.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q78);
+            ListaTodasQuestoes.Add(Q78);
 
             var Q79 = new Questao();
             Q79.Nivelresposta = 8;
@@ -1013,7 +1028,7 @@ namespace Showdomiliao
             Q79.Resposta05 = "C5H12";
             Q79.RespostaCorreta = 1;
             Q79.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q79);
+            ListaTodasQuestoes.Add(Q79);
 
             var Q80 = new Questao();
             Q80.Nivelresposta = 8;
@@ -1025,7 +1040,7 @@ namespace Showdomiliao
             Q80.Resposta05 = "Berlim";
             Q80.RespostaCorreta = 1;
             Q80.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q80);
+            ListaTodasQuestoes.Add(Q80);
 
             var Q81 = new Questao();
             Q81.Nivelresposta = 9;
@@ -1037,7 +1052,7 @@ namespace Showdomiliao
             Q81.Resposta05 = "Deserto de Mojave";
             Q81.RespostaCorreta = 1;
             Q81.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q81);
+            ListaTodasQuestoes.Add(Q81);
 
             var Q82 = new Questao();
             Q82.Nivelresposta = 9;
@@ -1049,7 +1064,7 @@ namespace Showdomiliao
             Q82.Resposta05 = "James Clerk Maxwell";
             Q82.RespostaCorreta = 1;
             Q82.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q82);
+            ListaTodasQuestoes.Add(Q82);
 
             var Q83 = new Questao();
             Q82.Nivelresposta = 9;
@@ -1061,7 +1076,7 @@ namespace Showdomiliao
             Q83.Resposta05 = "Philadelphia";
             Q83.RespostaCorreta = 2;
             Q83.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q83);
+            ListaTodasQuestoes.Add(Q83);
 
             var Q84 = new Questao();
             Q84.Nivelresposta = 9;
@@ -1073,7 +1088,7 @@ namespace Showdomiliao
             Q84.Resposta05 = "Magnésio";
             Q84.RespostaCorreta = 1;
             Q84.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q84);
+            ListaTodasQuestoes.Add(Q84);
 
             var Q85 = new Questao();
             Q85.Nivelresposta = 9;
@@ -1085,7 +1100,7 @@ namespace Showdomiliao
             Q85.Resposta05 = "Oceania";
             Q85.RespostaCorreta = 2;
             Q85.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q85);
+            ListaTodasQuestoes.Add(Q85);
 
             var Q86 = new Questao();
             Q86.Nivelresposta = 9;
@@ -1097,7 +1112,7 @@ namespace Showdomiliao
             Q86.Resposta05 = "Excreção de resíduos";
             Q86.RespostaCorreta = 3;
             Q86.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q86);
+            ListaTodasQuestoes.Add(Q86);
 
             var Q87 = new Questao();
             Q87.Nivelresposta = 9;
@@ -1109,7 +1124,7 @@ namespace Showdomiliao
             Q87.Resposta05 = "Michael Faraday";
             Q87.RespostaCorreta = 2;
             Q87.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q87);
+            ListaTodasQuestoes.Add(Q87);
 
             var Q88 = new Questao();
             Q88.Nivelresposta = 9;
@@ -1121,7 +1136,7 @@ namespace Showdomiliao
             Q88.Resposta05 = "Nápoles";
             Q88.RespostaCorreta = 1;
             Q88.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q88);
+            ListaTodasQuestoes.Add(Q88);
 
             var Q89 = new Questao();
             Q89.Nivelresposta = 9;
@@ -1133,7 +1148,7 @@ namespace Showdomiliao
             Q89.Resposta05 = "Lago Edward";
             Q89.RespostaCorreta = 1;
             Q89.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q89);
+            ListaTodasQuestoes.Add(Q89);
 
             var Q90 = new Questao();
             Q90.Nivelresposta = 9;
@@ -1145,7 +1160,7 @@ namespace Showdomiliao
             Q90.Resposta05 = "Nitrogênio";
             Q90.RespostaCorreta = 3;
             Q90.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q90);
+            ListaTodasQuestoes.Add(Q90);
 
             var Q91 = new Questao();
             Q91.Nivelresposta = 10;
@@ -1157,7 +1172,7 @@ namespace Showdomiliao
             Q91.Resposta05 = "Apalaches";
             Q91.RespostaCorreta = 3;
             Q91.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q91);
+            ListaTodasQuestoes.Add(Q91);
 
             var Q92 = new Questao();
             Q92.Nivelresposta = 10;
@@ -1169,7 +1184,7 @@ namespace Showdomiliao
             Q92.Resposta05 = "H.G. Wells";
             Q92.RespostaCorreta = 1;
             Q92.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q92);
+            ListaTodasQuestoes.Add(Q92);
 
             var Q93 = new Questao();
             Q93.Nivelresposta = 10;
@@ -1181,7 +1196,7 @@ namespace Showdomiliao
             Q93.Resposta05 = "O2";
             Q93.RespostaCorreta = 1;
             Q93.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q93);
+            ListaTodasQuestoes.Add(Q93);
 
             var Q94 = new Questao();
             Q94.Nivelresposta = 10;
@@ -1193,7 +1208,7 @@ namespace Showdomiliao
             Q94.Resposta05 = "Maio";
             Q94.RespostaCorreta = 1;
             Q94.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q94);
+            ListaTodasQuestoes.Add(Q94);
 
             var Q95 = new Questao();
             Q95.Nivelresposta = 10;
@@ -1205,7 +1220,7 @@ namespace Showdomiliao
             Q95.Resposta05 = "Etiópia";
             Q95.RespostaCorreta = 1;
             Q95.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q95);
+            ListaTodasQuestoes.Add(Q95);
 
             var Q96 = new Questao();
             Q96.Nivelresposta = 10;
@@ -1217,7 +1232,7 @@ namespace Showdomiliao
             Q96.Resposta05 = "Rankine";
             Q96.RespostaCorreta = 2;
             Q96.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q96);
+            ListaTodasQuestoes.Add(Q96);
 
             var Q97 = new Questao();
             Q97.Nivelresposta = 10;
@@ -1229,7 +1244,7 @@ namespace Showdomiliao
             Q97.Resposta05 = "Sistema Galáctico";
             Q97.RespostaCorreta = 4;
             Q97.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q97);
+            ListaTodasQuestoes.Add(Q97);
 
             var Q98 = new Questao();
             Q98.Nivelresposta = 10;
@@ -1241,7 +1256,7 @@ namespace Showdomiliao
             Q98.Resposta05 = "Cenoura";
             Q98.RespostaCorreta = 3;
             Q98.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q98);
+            ListaTodasQuestoes.Add(Q98);
 
             var Q99 = new Questao();
             Q99.Nivelresposta = 10;
@@ -1253,7 +1268,7 @@ namespace Showdomiliao
             Q99.Resposta05 = "Glicosímetro";
             Q99.RespostaCorreta = 2;
             Q99.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q99);
+            ListaTodasQuestoes.Add(Q99);
 
             var Q100 = new Questao();
             Q100.Nivelresposta = 10;
@@ -1265,7 +1280,7 @@ namespace Showdomiliao
             Q100.Resposta05 = "Camelo";
             Q100.RespostaCorreta = 1;
             Q100.ConfiguraEstruturaDesenho(labelpergunta, button1, button2, button3, button4, button5);
-            ListaQuestoes.Add(Q100);
+            ListaTodasQuestoes.Add(Q100);
 
             ProximaQuestao();
 
