@@ -30,7 +30,7 @@ namespace Showdomiliao
             else if (n == 9)
                 Pontuacao = 500000;
             else if (n == 10)
-                Pontuacao = 100000;
+                Pontuacao = 1000000;
         }
         public void ProximaQuestao()
         {
@@ -55,17 +55,24 @@ namespace Showdomiliao
             if (QuestaoAtual.VerificaResposta(RespostaSelecionada))
             {
                 await Task.Delay(1500);
-                AdicionaPontuacao(NivelAtual);
-                NivelAtual++;
-                ProximaQuestao();
-                labelPontuacao.Text = "Pontuação:R$" + Pontuacao.ToString();
-                labelNivel.Text = "Nível:" + NivelAtual.ToString();
-
                 if (NivelAtual == 10)
                 {
 
+
+                    await App.Current.MainPage.DisplayAlert("VOCÊ GANHOU 1 🌽🌽🌽🌽🌽🌽🌽!", "Parabéns!", "Ok");
                     Application.Current.MainPage = new Telainicial();
                 }
+                else 
+                {
+                    AdicionaPontuacao(NivelAtual);
+                    NivelAtual++;
+                    ProximaQuestao();
+                    labelPontuacao.Text = "Pontuação:R$" + Pontuacao.ToString();
+                    labelNivel.Text = "Nível:" + NivelAtual.ToString();
+                }
+
+
+
             }
             else
             {
