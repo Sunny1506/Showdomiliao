@@ -32,6 +32,10 @@ namespace Showdomiliao
             else if (n == 10)
                 Pontuacao = 1000000;
         }
+        public Questao GetQuestaoAtual()
+        {
+            return QuestaoAtual;
+        }
         public void ProximaQuestao()
         {
             var ListaQuestoes = ListaTodasQuestoes.Where(d => d.Nivelresposta == NivelAtual).ToList();
@@ -81,6 +85,7 @@ namespace Showdomiliao
             }
 
         }
+        
 
         int NivelAtual = 1;
 

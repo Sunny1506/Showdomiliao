@@ -4,7 +4,8 @@ namespace Showdomiliao
     {
         public bool Equals (Questao q)
         {
-            return this.Nivelresposta == q.Nivelresposta;
+            return this.Nivelresposta == q.Nivelresposta &&
+            this.Pergunta == q.Pergunta;
         }
         public string Pergunta;
         public string Resposta01;
@@ -46,6 +47,13 @@ namespace Showdomiliao
             ButtonResposta3.BackgroundColor = Color.FromRgba("#4287f5");
             ButtonResposta4.BackgroundColor = Color.FromRgba("#4287f5");
             ButtonResposta5.BackgroundColor = Color.FromRgba("#4287f5");
+
+            ButtonResposta1.IsVisible=true;
+            ButtonResposta2.IsVisible=true;
+            ButtonResposta3.IsVisible=true;
+            ButtonResposta4.IsVisible=true;
+            ButtonResposta5.IsVisible=true;
+            
 
         }
 

@@ -2,16 +2,16 @@ namespace Showdomiliao;
 
 public partial class MainPage : ContentPage
 {
-    Gerenciador gerenciador;
+	Gerenciador gerenciador;
 
-    public MainPage()
-    {
-        InitializeComponent();
-        gerenciador = new Gerenciador(Labelpergunta, Button1, Button2, Button3, Button4, Button5, labelPontuacao, labelNivel);
-		
-    }   
+	public MainPage()
+	{
+		InitializeComponent();
+		gerenciador = new Gerenciador(Labelpergunta, Button1, Button2, Button3, Button4, Button5, labelPontuacao, labelNivel);
 
-    void OnButtonResposta01ButtonClicked(object sender, EventArgs args)
+	}
+
+	void OnButtonResposta01ButtonClicked(object sender, EventArgs args)
 	{
 		gerenciador.VerfiicaCorreto(1);
 	}
@@ -31,10 +31,27 @@ public partial class MainPage : ContentPage
 	{
 		gerenciador.VerfiicaCorreto(5);
 	}
-	 private void ButtonVoltarButtonClicked(object sender, EventArgs args)
-        {
+	private void ButtonVoltarButtonClicked(object sender, EventArgs args)
+	{
 
-            Application.Current.MainPage = new Telainicial();
+		Application.Current.MainPage = new Telainicial();
 
-        }
+	}
+
+	async void OnAjudaPulaClicked(object s, EventArgs E)
+	{
+		if (await DisplayAlert("PULAR QUESTÃO!", "Deseja mesmo pular a questão, depois não será possível usar esse recurso", "PULAR QUESTÃO!"))
+		{
+			gerenciador.ProximaQuestao();
+			(s as ImageButton).IsVisible = false;
+		}
+
+	}
+	void OnAjudaRetirarClicked(object s, EventArgs e)
+	{
+		var ajuda = new RetiraErradas();
+		ajuda.ConfiguraDesenho(Button1, Button2, Button3, Button4, Button5);
+		ajuda.RealizaAjuda(gerenciador.GetQuestaoAtual());
+		(s as ImageButton).IsVisible = false;
+	}
 }

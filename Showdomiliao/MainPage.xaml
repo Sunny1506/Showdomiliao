@@ -94,7 +94,7 @@
                         Grid.ColumnSpan="3"/>
                 <ImageButton Source="cartas.png"
                              Padding="10,10,10,10"
-                             x:Name="ButtonCartas"
+                             Clicked="OnAjudaRetirarClicked"
                              BackgroundColor="White"
                              Grid.Row="9"
                              Grid.Column="0"/>
@@ -106,7 +106,7 @@
                              Grid.Column="1"/>
                 <ImageButton Source="pulavez.png"
                              Padding="10,10,10,10"
-                             x:Name="ButtonTiraum"
+                             Clicked="OnAjudaPulaClicked"
                              BackgroundColor="White"
                              Grid.Row="9"
                              Grid.Column="2"/>
