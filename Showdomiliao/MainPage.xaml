@@ -100,6 +100,7 @@
                              Grid.Column="0"/>
                 <ImageButton Source="universitarios.png"
                              Padding="10,10,10,10"
+                             Clicked="OnAjudaUniversitariosClicked"
                              x:Name="ButtonUniversitários"
                              BackgroundColor="White"
                              Grid.Row="9"

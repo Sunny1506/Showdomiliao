@@ -40,18 +40,33 @@ public partial class MainPage : ContentPage
 
 	async void OnAjudaPulaClicked(object s, EventArgs E)
 	{
-		if (await DisplayAlert("PULAR QUESTÃO!", "Deseja mesmo pular a questão, depois não será possível usar esse recurso", "PULAR QUESTÃO!"))
+		if (await DisplayAlert("PULAR QUESTÃO!", "Deseja mesmo pular a questão, depois não será possível usar esse recurso", "PULAR QUESTÃO", "CANCELAR"))
 		{
 			gerenciador.ProximaQuestao();
 			(s as ImageButton).IsVisible = false;
 		}
 
 	}
-	void OnAjudaRetirarClicked(object s, EventArgs e)
+	async void OnAjudaRetirarClicked(object s, EventArgs e)
 	{
-		var ajuda = new RetiraErradas();
-		ajuda.ConfiguraDesenho(Button1, Button2, Button3, Button4, Button5);
-		ajuda.RealizaAjuda(gerenciador.GetQuestaoAtual());
-		(s as ImageButton).IsVisible = false;
+		if (await DisplayAlert("CARTAS 🃏!", "Deseja mesmo usar o recurso das cartas, depois não será possível usar esse recurso", "USAR AS CARTAS", "CANCELAR"))
+		{
+			var ajuda = new RetiraErradas();
+			ajuda.ConfiguraDesenho(Button1, Button2, Button3, Button4, Button5);
+			ajuda.RealizaAjuda(gerenciador.GetQuestaoAtual());
+			(s as ImageButton).IsVisible = false;
+		}
+
+	}
+	async void OnAjudaUniversitariosClicked(object s, EventArgs e)
+	{
+		if (await DisplayAlert("UNIVERSITÁRIOS! 🎓", "Deseja mesmo usar o recurso dos universitários, depois não será possível usar esse recurso", "USAR AJUDA DOS UNIVERSITÁRIOS", "CANCELAR"))
+		{
+			var ajuda = new Universitarios();
+			ajuda.ConfiguraDesenho(Button1, Button2, Button3, Button4, Button5);
+			ajuda.RealizaAjuda(gerenciador.GetQuestaoAtual());
+			(s as ImageButton).IsVisible = false;
+		}
+
 	}
 }
