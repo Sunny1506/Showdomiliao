@@ -9,6 +9,8 @@ namespace Showdomiliao
         Label labelNivel;
         Questao QuestaoAtual;
 
+   
+
         void AdicionaPontuacao(int n)
         {
             if (n == 1)
@@ -66,7 +68,7 @@ namespace Showdomiliao
                     await App.Current.MainPage.DisplayAlert("VOCÊ GANHOU 1 🌽🌽🌽🌽🌽🌽🌽!", "Parabéns!", "Ok");
                     Application.Current.MainPage = new Telainicial();
                 }
-                else 
+                else
                 {
                     AdicionaPontuacao(NivelAtual);
                     NivelAtual++;
@@ -85,9 +87,10 @@ namespace Showdomiliao
             }
 
         }
-        
+
 
         int NivelAtual = 1;
+       
 
         void Inicializar()
         {
