@@ -52,13 +52,13 @@ public partial class MainPage : ContentPage
 			{
 				gerenciador.ProximaQuestao();
 				pulou++;
-				(s as Button).Text = "Pular " + 2.ToString();
+				(s as Button).Text = "Pular " + 2.ToString() + "x";
 			}
 				else if (pulou == 1)
 			{
 				gerenciador.ProximaQuestao();
 				pulou++;
-				(s as Button).Text = "Pular " + 3.ToString();
+				(s as Button).Text = "Pular " + 1.ToString() + "x";
 
 			}
 
